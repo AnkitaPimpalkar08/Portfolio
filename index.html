@@ -1,1087 +1,1426 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    .download-btn {
-      display: flex;
-      width: 15em;
-      justify-content: space-around;
-      align-items: center;
-      padding: 10px 20px;
-      color: #fff;
-      text-decoration: none;
-      border: none;
-      border-radius: 50px;
-      font-size: 15px;
-      cursor: pointer;
-      transition: background-color 0.7s ease;
-
-    }
-
-
-    .download-btn:hover {
-      background-color: #fed793;
-      font-size: 17px;
-      transition: background-color 0.7s ease;
-      color: black;
-
-    }
-  </style>
-  <title>Ankita's Portfolio</title>
-
-  <link rel="shortcut icon" href="female-user.png" type="image/x-icon">
-
-  <!--
-    - custom css link
-  -->
-  <link rel="stylesheet" href="./assets/css/style.css">
-
-  <!--
-    - google font link
-  -->
-<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankita Vilas Pimpalkar | Software Engineer | Full-Stack Developer | AI/ML</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=DM+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Color Palette - Deep Ocean Tech */
+            --primary-dark: #0a0e27;
+            --primary-blue: #1a2332;
+            --accent-coral: #ff6b6b;
+            --accent-amber: #ffd93d;
+            --accent-teal: #6bcf9f;
+            --text-light: #e8edf4;
+            --text-muted: #8b95a8;
+            --card-bg: rgba(26, 35, 50, 0.6);
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--primary-dark);
+            color: var(--text-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+        }
+        
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--accent-coral) 0%, transparent 70%);
+            top: 10%;
+            right: 10%;
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+            filter: blur(80px);
+        }
+        
+        .bg-animation::after {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-teal) 0%, transparent 70%);
+            bottom: 10%;
+            left: 10%;
+            border-radius: 50%;
+            animation: float 25s infinite ease-in-out reverse;
+            filter: blur(100px);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(50px, 80px); }
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(10, 14, 39, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-coral);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--text-light);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 5% 4rem;
+            position: relative;
+        }
+        
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-light) 0%, var(--accent-teal) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-content .tagline {
+            font-size: 1.5rem;
+            color: var(--accent-coral);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            line-height: 1.8;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: var(--accent-coral);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--accent-teal);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--accent-teal);
+            transform: translateY(-2px);
+        }
+        
+        .hero-image {
+            position: relative;
+        }
+        
+        .profile-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .profile-card img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 4px solid var(--accent-coral);
+        }
+        
+        .profile-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .profile-card .role {
+            color: var(--accent-teal);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent-coral);
+            transform: translateY(-3px);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-label {
+            font-family: 'Fira Code', monospace;
+            color: var(--accent-coral);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-coral);
+        }
+        
+        .skill-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .skill-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent-coral), var(--accent-teal));
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.5rem;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--accent-coral);
+            border: 3px solid var(--primary-dark);
+        }
+        
+        .timeline-item .company {
+            font-size: 0.9rem;
+            color: var(--accent-teal);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-item .period {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .timeline-item li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-muted);
+        }
+        
+        .timeline-item li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-coral);
+        }
+        
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-coral), var(--accent-teal));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-coral);
+        }
+        
+        .project-card:hover::before {
+            opacity: 1;
+        }
+        
+        .project-content {
+            padding: 2rem;
+        }
+        
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .project-content p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tech-tag {
+            background: rgba(108, 207, 159, 0.2);
+            color: var(--accent-teal);
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-family: 'Fira Code', monospace;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .project-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .project-link:hover {
+            color: var(--accent-coral);
+        }
+        
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 0 auto;
+        }
+        
+        .testimonial {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .testimonial:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-teal);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .testimonial p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            color: var(--text-muted);
+            flex-grow: 1;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 0.3rem;
+        }
+        
+        .testimonial-role {
+            color: var(--accent-teal);
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-item {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-item i {
+            font-size: 2rem;
+            color: var(--accent-coral);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-item a {
+            color: var(--accent-teal);
+            text-decoration: none;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary-blue);
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        footer p {
+            color: var(--text-muted);
+        }
+        
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-content p {
+                margin: 0 auto 2rem;
+            }
+            
+            .cta-buttons {
+                justify-content: center;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 300px;
+                height: calc(100vh - 80px);
+                background: var(--primary-blue);
+                flex-direction: column;
+                padding: 2rem;
+                transition: right 0.3s;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .projects-grid,
+            .skills-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content .tagline {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
-
-<body bgcolor="black">
-
-  <!--
-    - #MAIN
-  -->
-
-  <main>
-
-    <!--
-      - #SIDEBAR
-    -->
-
-    <aside class="sidebar" data-sidebar>
-
-      <div class="sidebar-info">
- <!--
-        <figure class="avatar-box">
-          <!-- <img src="./assets/images/my-avatar.png" alt="Ankita Vilas Pimpalkar" width="80"> -->
-  <!--         <div class="image-container">
-            <img src="./assets/images/my-avatar.png" alt="Original Image">
-            <img class="hover-image avatar-box" src="./assets/images/profilepic.jpg" alt="Hover Image">
-          </div>
-        </figure>
-  -->
-
-        <figure class="avatar-box">
-          <img src="./assets/images/profilepic.jpg" alt="Ankita Vilas Pimpalkar" width="80">
-        </figure>
-
-        <div class="info-content">
-          <h1 class="name" title="Ankita Vilas Pimpalkar">Ankita Vilas Pimpalkar</h1>
-
-          <p class="title">Software Developer</p>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation"></div>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">AVP</div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
-
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show Contacts</span>
-
-          <ion-icon name="chevron-down"></ion-icon>
-        </button>
-
-      </div>
-
-      <div class="sidebar-info_more">
-
-        <div class="separator"></div>
-
-        <ul class="contacts-list">
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="tagline">Software Engineer | Full-Stack Developer | AI/ML</div>
+                <h1>Ankita Vilas Pimpalkar</h1>
+                <p>Building scalable software systems from backend to frontend. Experienced in full-stack development, data engineering, and deploying ML solutions. Proficient in Python, JavaScript, SQL, and modern frameworks.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i> Get In Touch
+                    </a>
+                    <a href="AnkitaVilasPimpalkar_Resume.pdf" download class="btn btn-secondary">
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
+                </div>
             </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
-
-              <a href="mailto:apimpalkar707@gmail.com" class="contact-link">apimpalkar707@gmail.com</a>
+            <div class="hero-image">
+                <div class="profile-card">
+                    <img src="./assets/images/profilepic.jpg" alt="Ankita Vilas Pimpalkar">
+                    <h3>Ankita Vilas Pimpalkar</h3>
+                    <p class="role">Software Engineer @ GWU</p>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0;">
+                        <i class="fas fa-map-marker-alt"></i> Washington D.C., USA
+                    </p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/ankita-pimpalkar-7510a9174/" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/AnkitaPimpalkar08" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:apimpalkar707@gmail.com">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
-
-          </li>
- <!--
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="phone-portrait-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Phone</p>
-
-              <a href="tel:+1 (571) 438-4537" class="contact-link">+(571) 438-4537</a>
-            </div>
-   </li>
- -->
-  
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Location</p>
-
-              <address> Washington D.C, USA</address>
-            </div>
-
-          </li>
-
-        </ul>
-
-        <div class="separator"></div>
-
-        <ul class="social-list">
-
-          <li class="social-item">
-            <a href="https://www.linkedin.com/in/ankita-pimpalkar-7510a9174/" class="social-link">
-              <ion-icon name="logo-linkedin"></ion-icon>
-            </a>
-          </li>
-
-
-
-          <li class="social-item">
-            <a href="https://github.com/AnkitaPimpalkar08" class="social-link">
-              <ion-icon name="logo-github"></ion-icon>
-            </a>
-          </li>
-
-   
-
-
-
-        </ul>
-
-      </div>
-
-    </aside>
-
-
-
-
-
-    <!--
-      - #main-content
-    -->
-
-    <div class="main-content">
-
-      <!--
-        - #NAVBAR
-      -->
-
-      <nav class="navbar">
-
-        <ul class="navbar-list">
-
-          <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Resume</button>
-          </li>
-
-          <!-- <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Portfolio</button>
-          </li> -->
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Project</button>
-          </li>
-
-
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Contact</button>
-          </li>
-
-        </ul>
-
-      </nav>
-
-
-
-
-
-      <!--
-        - #ABOUT
-      -->
-
-      <article class="about  active" data-page="about">
-
-        <header>
-          <h2 class="h2 article-title">About me</h2>
-        </header>
-
-        <section class="about-text">
-  <p>
-    Hi, I’m <strong>Ankita Vilas Pimpalkar</strong>. I am a software engineer with a strong interest in 
-    full-stack development, machine learning, and building data-driven solutions.
-  </p>
-
-  <p>
-    I am currently pursuing my <strong>Master’s in Computer Science</strong> at 
-    <strong>George Washington University</strong>, where I received the 
-    <strong>Graduate Tuition Fellowship</strong> for academic excellence and research performance.
-  </p>
-
-  <p>
-    Over the past few months, I’ve worked with <strong>Professor Eric Dano</strong> on a 
-    <strong>real-time anomaly detection system</strong> using Raspberry Pi, sensor data, and machine learning models 
-    like Isolation Forest. This evolved into a deployable system with a <strong>Streamlit dashboard</strong> 
-    for real-time monitoring and insights. I am now expanding this work by developing 
-    <strong>interactive Raspberry Pi tools</strong> to support undergraduate learning, and I will be assisting 
-    <strong>Prof. Dano’s Spring 2026 Systems Engineering course</strong> to integrate these tools into classroom learning.
-  </p>
-
-  <p>
-    I have experience working at <strong>Cognizant</strong>, where I managed enterprise-scale deployments and 
-    SQL databases, and at multiple startups where I built responsive web applications, optimized user experiences, 
-    and helped deliver minimum viable products faster.
-  </p>
-
-  <p>
-    My technical expertise includes <strong>Python, Java, PHP, SQL, JavaScript, HTML/CSS</strong> and frameworks 
-    like <strong>TensorFlow, Streamlit, CodeIgniter, and OpenCV</strong>. Some of my projects include 
-    a <strong>real-time anomaly detection dashboard</strong>, a <strong>personal voice assistant</strong>, 
-    and a <strong>handwritten character recognition system</strong>.
-  </p>
-
-  <p>
-    I am seeking <strong>full-time opportunities</strong> starting <strong>May 2026</strong> where I can contribute 
-    as a software engineer or AI/ML developer and continue growing by solving challenging real-world problems.
-  </p>
-</section>
-
-
-        <!--
-          - service
-        -->
-
-        <section class="service">
-
-          <h3 class="h3 service-title">What i'm doing</h3>
-
-          <ul class="service-list">
-
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/web-developer.png" alt="Web development icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Web development</h4>
-
-                <p class="service-item-text">
-                  High-quality development of sites at the professional level.
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header fade-in">
+            <div class="section-label">Who I Am</div>
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">
+                Software engineer with 3+ years of experience building scalable web applications, data pipelines, and ML systems. Proficient in full-stack development (React, Node.js, PHP), backend engineering (Python, SQL, REST APIs), and deploying AI/ML solutions on edge and cloud platforms.
+            </p>
+        </div>
+        
+        <div class="skills-grid">
+            <div class="skill-card fade-in">
+                <div class="icon"><i class="fas fa-layer-group"></i></div>
+                <h3>Full-Stack Development</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                    Building end-to-end web applications with modern frameworks. Experience with React, Vue.js, Node.js, PHP/CodeIgniter, and responsive UI design.
                 </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/coding.png" alt="Full stack development icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Full-Stack Development</h4>
-
-                <p class="service-item-text">
-                  Building end-to-end, high-quality web applications with modern technologies.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/engineer.png" alt="Software Engineering icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Software Engineering</h4>
-
-                <p class="service-item-text">
-                  Delivering efficient and scalable solutions for complex technical challenges.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/deep-learning.png" alt="Data Science & Machine Learning icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Data Science & Machine Learning
-                </h4>
-
-                <p class="service-item-text">
-                  Applying neural networks and NLP to solve data-driven problems.
-                </p>
-              </div>
-
-            </li>
-
-          </ul>
-
-        </section>
-
-
-      <!--
-          Work experience
-        -->       
-        <section class="timeline">
-
-          <div class="title-wrapper">
-           
-            <h3 class="h3">Work Experience</h3>
-          </div>
-
-          <ol class="timeline-list">
-
-             <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Software Engineer Intern (AI/ML) </h4>
-
-              <span>The George Washington University (Feb 2025 – Present)</span>
-
-              <ul class="timeline-text">
-                  <li>o  Working under Prof. Eric Dano to develop Python-based NLP, AI, and ML applications for a Raspberry Pi-based sensor system as part of an undergraduate Model-Based Systems Engineering (MBSE) course.</li>
-                  <li>o  Creating capability data sheets detailing system architecture, sensor configurations, required hardware, libraries, data inputs, and key parameters.</li>
-                  <li>o  Implementing AI-driven solutions using RP IDE, Python, and embedded systems to enhance sensor-based automation and data processing.</li>
-                  <li>o  Collaborating on system architecture design and documenting AI/ML capabilities for structured framework development.</li>
-                  <li>o  Working with embedded systems hardware, including Raspberry Pi 4, HSU sensor kits, GPIO breakout cables, and cameras.</li>
-              </ul>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Software Engineer (Full-Stack)</h4>
-
-              <span>Stealth Startups - Alternative Structure Group, Friends-Square, Go-Scale (Aug 2022 – May 2024)</span>
-
-              <ul class="timeline-text">
-                <li>o  Designed impactful landing pages and implemented a robust database for a fintech startup, Alternative Structure Group, optimizing user experience and data management, leading to a 40% increase in engagement and a 30% reduction in backend processing time.</li>
-                <li>o  Spearheaded the development of the technical roadmap, providing strategic recommendations on technology stacks, tools, and techniques. Worked closely with the team to understand and meet the business needs of the company's key clients.</li>
-                <li>o  Implemented new features and optimized backend functionality for Friends-Square, a New Delhi-based psychology firm, improving system responsiveness by 35% and enhancing overall user experience.</li>
-                <li>o  Developed dynamic pages and offered database solutions for Go-Scale’s client, improving platform performance and delivering a student-centric website for online courses and tutorials, increasing site traffic by 20%.</li>
-            </ul>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Software Engineer</h4>
-
-              <span>Cognizant Technology Solutions (June 2021 – July 2022)</span>
-              <ul class="timeline-text">
-                <li>o  Developed efficient and scalable code that improved system performance and client satisfaction by customizing a development plan that met their specific requirements, resulting in a 50% client retention rate.</li>
-                <li>o  Successfully packaged and deployed over 150 applications using PowerShell scripting, SCCM deployment, and Intune packaging, resulting in a 75% success rate. Showcased strong potential for growth and leadership through active participation in team-based projects.</li>
-                <li>o  Reduced application installation time by 50% by implementing silent installations using VB-Scripts and Batch-Scripts. Managed and maintained large databases with over 10,000 records, resulting in 60% uptime and 70% data integrity.</li>
-            </ul>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Web Developer Intern</h4>
-
-              <span>Root Kings (Nov 2020 – May 2021)</span>
-
-              <ul class="timeline-text">
-                <li>o  Coded and developed core modules using JavaScript, Vue.js, and CSS for Superfan-App, a celebrity game-based social media platform.</li>
-                <li>o  Collaborated with team members to create a seamless user experience and visually appealing interface.</li>
-                <li>o  Demonstrated exceptional problem-solving skills in resolving technical issues and bugs.</li>
-            </ul>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Software Engineer Intern </h4>
-
-              <span>Talent Anywhere Services (Aug 2020 – Nov 2020)</span>
-
-              <ul class="timeline-text">
-                <li>o  Designed and developed high-performance platforms such as Gujarati Sahitya Forum and NS4ED, using PHP and CodeIgniter, reducing load times by 40%. Facilitated team meetings and communicated effectively with various departments during the internship.</li>
-                <li>o  Implemented critical features such as user authentication, increasing platform security and usability by 25%. Assisted in the development of new software applications and improvements using computer science principles.</li>
-            </ul>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Junior Java Developer Intern</h4>
-              <span>Maxgen Technologies (Jan 2020 – Jun 2020)</span>
-              <ul class="timeline-text">
-                <li>o  Developed responsive web pages using Java, HTML, and CSS for BookMyMovie, increasing website responsiveness by 20%.</li>
-                <li>o  Experienced in troubleshooting issues related to data infrastructure, ensuring an 80% reduction in system errors and smooth data flow.</li>
-            </ul>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">PHP-Trainee</h4>
-              <span>Centre for Development of Advanced Computing (May 2018 – Jun 2018)</span>
-              <ul class="timeline-text">
-                <li>o  Developed and applied proficiency in PHP, HTML, and CSS to complete a project 15% ahead of schedule, successfully meeting distinct project requirements.</li>
-                <li>o  Demonstrated a growth mindset by willingly taking on new challenges and learning from experiences.</li>
-            </ul>
-
-            </li>
-
-          </ol>
-        </section>
-
-
-
-       
-       <section class="testimonials">
-
-          <h3 class="h3 testimonials-title">Testimonials</h3>
-
-          <ul class="testimonials-list has-scrollbar">
-
-          <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Akash Bhandari </h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    I have had the privilege of overseeing Ankita's professional development during her tenure with our organization. 
-                    Throughout her time at Cognizant, Ankita's ability to handle complex technical challenges, coupled with her relentless commitment to producing high-quality work, set her apart as an outstanding professional. 
-                    Her analytical skills, attention to detail, and innovative problem-solving approach were instrumental in the successful completion of several challenging assignments. 
-                    What truly distinguishes Ankita is not only her technical acumen but also her exceptional interpersonal and communication skills. Her contributions extended beyond the scope of her role, reflecting a deep commitment to the success of our collective objectives.
-                    To sum up, working with Ankita has been one of the most enriching and rewarding teamwork experiences I've had and I would, without hesitation, welcome her on any team I am part of.
-                  </p>
+                <div class="skill-tags">
+                    <span class="tag">React</span>
+                    <span class="tag">Vue.js</span>
+                    <span class="tag">Node.js</span>
+                    <span class="tag">PHP</span>
+                    <span class="tag">HTML/CSS</span>
                 </div>
-
-              </div>
-            </li> 
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Yash Kurzekar</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    I had the pleasure of working with Ankita on multiple projects, and she has consistently impressed me with her dedication and skills. She takes complete ownership of her tasks, ensuring high-quality deliverables every time. Her ability to stay focused, take a stand when needed, and adapt to new challenges is truly commendable. What sets her apart is her eagerness to learn and willingness to step beyond conventional tasks, always bringing creative solutions to the table. Beyond her technical excellence, she makes the work environment lively and engaging, making even the toughest tasks enjoyable. She is a fantastic colleague to have, and I highly recommend her!
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Shubham Gurjar</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Ankita and I worked together in Cognizant, and I was lucky to call her my coworker. 
-                    She consistently gave 100 percent effort to the team and played a significant role in ensuring that we completed assignments on time. 
-                    She had excellent time management skills and had a knack for keeping everyone calm and productive during intense crunch periods. 
-                    Any team would be lucky to have her, and I couldn’t recommend her more for any business looking for new talent.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Samiksha Chintawar</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    It is my pleasure to write this recommendation for my colleague Ankita, whom I have had the pleasure of working alongside at Cognizant.
-                    Ankita is a highly skilled and dedicated professional who always goes above and beyond in everything she does. 
-                    She is an excellent communicator and has a talent for bringing people together to work towards a common goal.
-                    What sets Ankita apart is her ability to think strategically and find innovative solutions to complex problems. 
-                    She is a natural leader who inspires those around her to work harder and smarter to achieve their goals.
-                    Throughout our time working together, She has consistently shown her exceptional work ethic and leadership qualities. 
-                    She is a true team player who is always willing to lend a helping hand to colleagues and goes the extra mile to ensure the success of our team's projects.
-                    I have no doubt that Ankita will make a valuable contribution to any organization sheworks with, and I wholeheartedly recommend her for any future opportunities.
-                  </p>
-                </div>
-
-              </div>
-            </li> 
-
-        <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Raju Mondal</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    I am thrilled to write this recommendation for my former classmate, Ankita whom I had the pleasure of working with on several group projects during our time at Chandigarh University.
-                    Ankita was an outstanding team member who consistently demonstrated exceptional teamwork, communication, and leadership skills. 
-                    She was able to effectively manage multiple responsibilities and ensured that all team members were working together cohesively towards a common goal.
-                    What impressed me most about Ankita was her ability to think creatively and find innovative solutions to complex problems. 
-                    She was always willing to go above and beyond to ensure that our team's projects were delivered to the highest standards.
-                    Throughout our time working together,She showed a great deal of enthusiasm, professionalism, and dedication to our team's success. 
-                    She was always willing to listen to other team members' ideas and provide valuable feedback.
-                   
-                  </p>
-                </div>
-
-              </div>
-            </li> 
+            </div>
             
-
-        <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Shruti Nimbarmunde</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Firstly, I would particularly mention that it brings me immense pleasure to recommend Ankita, a brilliant learner, supportive colleague and a hardworking lady. 
-                    I have had this privilege to work with her during her initial phase of working with Cognizant. She was one of the most curious and quick learners I have ever came across. 
-                    Not just that but she was among those rare hardworking Gems who just deny to give up and try to best of their efforts in every single task they perform. 
-                    It is a proud feeling to see her outstanding journey since that time. Also, the exceptionally increasing graph of her new skills and achievements are truly remarkable. 
-                    I think Ankita is an individual who will just never fail to add more value to the work she will do with her smart ways. More power to her and yes long way to go. 
-                    All the best !!
-                  </p>
+            <div class="skill-card fade-in">
+                <div class="icon"><i class="fas fa-server"></i></div>
+                <h3>Backend Engineering</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                    Designing robust backend systems, REST APIs, and database architectures. Expertise in Python, SQL, and scalable system design.
+                </p>
+                <div class="skill-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">REST APIs</span>
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">MySQL</span>
                 </div>
-
-              </div>
-            </li> 
-
-             <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Krushn Dayshmookh</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    It is with great enthusiasm that I recommend Ankita for a position in Web Application Development. 
-                    She is highly skilled and always eager to explore and experiment. Her diligence and keen eye for details is an asset for every team that Ankita is a part of.
-                  </p>
-                </div>
-
-              </div>
-            </li> 
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Sakshi Rajput</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    I highly recommend Ankita for a role in the technology. 
-                    She has a passion for innovation and experimentation, and has a proven track record of effectively utilizing her critical thinking and decision-making skills in her work. 
-                    Her strong work ethic and ability to collaborate with others make her well-suited for a role that requires teamwork and problem-solving. 
-                    I believe her creative talents will prove to be a valuable resource for any organization.
-                  </p>
-                </div>
-
-              </div>
-            </li> 
-        </ul>
-
-        </section>
-
-
-       
-
-        <div class="modal-container" data-modal-container>
-
-          <div class="overlay" data-overlay></div>
-
-          <section class="testimonials-modal">
-
-            <button class="modal-close-btn" data-modal-close-btn>
-              <ion-icon name="close-outline"></ion-icon>
-            </button>
-
-
-          </section>
-
-        </div>
-
-
-        <!--
-          - Work experience
-        -->
-
-
-
-        <!-- <section class="clients">
-
-          <h3 class="h3 clients-title">Clients</h3>
-
-          <ul class="clients-list has-scrollbar">
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-1-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-2-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-3-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-4-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-5-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-6-color.png" alt="client logo">
-              </a>
-            </li>
-
-          </ul>
-
-        </section> -->
-
-      </article>
-
-      <!--
-        - #RESUME
-      -->
-
-      <article class="resume" data-page="resume">
-
-        <header>
-          <h2 class="h2 article-title">Resume</h2>
-        </header>
-
-        <a href="AnkitaVilasPimpalkar_Resume.pdf" class="download-btn" download>
-          <img src="./assets/images/icon-resume.png" alt="Icon" class="icon">
-          <p>Download Resume</p>
-        </a>
-
-
-        <br>
-        <br>
-
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
             </div>
-            <h3 class="h3">Education</h3>
-          </div>
-
-          <ol class="timeline-list">
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Master’s in Computer Science</h4>
-
-              <span>2024 — Pursuing</span>
-
-              <p class="timeline-text">
-                George Washington University, Washington D.C.
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Bachelor of Engineering in Computer Science and Engineering</h4>
-
-              <span>2016 - 2020</span>
-
-              <p class="timeline-text">
-                Chandigarh University, Punjab, India
-              </p>
-
-            </li>
-
-
-
-          </ol>
-     
-
-        </section>
-
-      <!-- Skills Section Html Code -->
-<section class="Skills" id="skills">
-  
-  <div class="container">
-      <div class="heading">
-          <h1 class="skillh1">My Skills</h1>
-      </div>
-      <div class="mainSkill">
-          <div class="front">
-              <h2>Frontend</h2>
-              <div class="box">
-                  <div class="frontSkill">
-                      <img src="assets/images/html.png" alt="">
-                      HTML
-                  </div>
-                  <div class="frontSkill">
-                      <img src="assets/images/Css.png" alt="">
-                      CSS
-                  </div>
-                  <div class="frontSkill">
-                      <img src="assets/images/js.png" alt="">
-                      JavaScript
-                  </div>
-                  <div class="frontSkill">
-                    <img src="assets/images/vuejs.png" alt="">
-                      Vue.js
+            
+            <div class="skill-card fade-in">
+                <div class="icon"><i class="fas fa-database"></i></div>
+                <h3>Data Engineering</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                    Building ETL pipelines, real-time data processing systems, and optimizing database queries for high-performance applications.
+                </p>
+                <div class="skill-tags">
+                    <span class="tag">ETL Pipelines</span>
+                    <span class="tag">MQTT</span>
+                    <span class="tag">Streamlit</span>
+                    <span class="tag">Data Processing</span>
                 </div>
-              </div>
-          </div>
-          <div class="back">
-              <h2>Backend</h2>
-              <div class="box">
-                  <div class="backSkill">
-                      <img src="assets/images/python.png" alt="">
-                      Python
-                  </div>
-                  <div class="backSkill">
-                      <img src="assets/images/java.png" alt="">
-                      Java
-                  </div>
-                  <div class="backSkill">
-                      <img src="assets/images/mongo.png" alt="">
-                      MongoDB
-                  </div>
-                  <div class="backSkill">
-                      <img src="assets/images/sql.png" alt="">
-                      SQL
-                  </div>
-                  <div class="backSkill">
-                    <img src="assets/images/mysql.png" alt="">
-                    MySQL workbench
+            </div>
+            
+            <div class="skill-card fade-in">
+                <div class="icon"><i class="fas fa-robot"></i></div>
+                <h3>AI/ML Engineering</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                    Implementing machine learning models for production use. Experience with TensorFlow, PyTorch, anomaly detection, and edge deployment.
+                </p>
+                <div class="skill-tags">
+                    <span class="tag">TensorFlow</span>
+                    <span class="tag">PyTorch</span>
+                    <span class="tag">Scikit-learn</span>
+                    <span class="tag">Raspberry Pi</span>
                 </div>
-                  <div class="backSkill">
-                      <img src="assets/images/codeigniter.png" alt="">
-                      CodeIgniter (PHP Framework)
-                  </div>
-                  <div class="backSkill">
-                    <img src="assets/images/php.png" alt="">
-                    PHP
-                </div>
-              </div>
-          </div>
-         
-          <div class="tools">
-              <h2>Tools</h2>
-              <div class="box">
-                  <div class="toolsSkill">
-                      <img src="assets/images/git.png" alt="">
-                      Git
-                  </div>
-                  <div class="toolsSkill">
-                      <img src="assets/images/github.png" alt="">
-                      Github
-                  </div>
-                  <div class="toolsSkill">
-                      <img src="assets/images/vscode.jpg" alt="">
-                      VsCode
-                  </div>
-                  <div class="toolsSkill">
-                    <img src="assets/images/sccm.png" alt="">
-                     SCCM (System Center Configuration Manager)
-                </div>
-                  <div class="toolsSkill">
-                      <img src="assets/images/figma.png" alt="">
-                      Figma
-                  </div>
-                  <div class="toolsSkill">
-                    <img src="assets/images/icons8-microsoft-intune-48.png" alt="">
-                    Intune
-                </div>
-                  <div class="toolsSkill">
-                      <img src="assets/images/canva.jpg" alt="">
-                      Canva
-                  </div>
-              </div>
-          </div>
-          <div class="datasci">
-            <h2>Other Skills</h2>
-            <div class="box">
-                <div class="datasciSkill">
-                    <img src="assets/images/machine.png" alt="">
-                    Analytical Thinking
-                </div>         
-                <div class="datasciSkill">
-                    <img src="assets/images/machine.png" alt="">
-                    Team Leadership
-                </div>
-                <div class="datasciSkill">
-                    <img src="assets/images/machine.png" alt="">
-                    Cross-Functional Collaboration
-                </div>
-                <div class="datasciSkill">
-                  <img src="assets/images/machine.png" alt="">
-                  Process Optimization
-              </div>         
-              <div class="datasciSkill">
-                  <img src="assets/images/machine.png" alt="">
-                  Strategic Planning
-              </div>
-              <div class="datasciSkill">
-                  <img src="assets/images/machine.png" alt="">
-                  Decision-Making
-              </div>
-              
             </div>
         </div>
-
-      </div>
-  </div>
-</section>
-<!-- Skills Section Html Code -->
-
-      </article>
-
-      <!--
-        - #PORTFOLIO
-      -->
-
-      <article class="portfolio" data-page="portfolio">
-
-        <header>
-          <h2 class="h2 article-title">Portfolio</h2>
-        </header>
-
-        <section class="projects">
-
-          <ul class="filter-list">
-
-            <li class="filter-item">
-              <button class="active" data-filter-btn>All</button>
-            </li>
-
-         
-
-          </ul>
-
-          <div class="filter-select-box">
-
-            <button class="filter-select" data-select>
-
-              <div class="select-value" data-selecct-value>Select category</div>
-
-              <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
-              </div>
-
-            </button>
-
-            <ul class="select-list">
-
-
-            </ul>
-
-          </div>
-
-          <ul class="project-list">
-
-          </ul>
-
-        </section>
-
-      </article>
-
-      <!--
-        - #project
-      -->
-      
-      <article class="project" data-page="project">
-
-        <header>
-          <h2 class="h2 article-title"> Ankita's Project</h2>
-        </header>
-
-        <section class="project-posts">
-
-          <ul class="project-posts-list">
-
-
-            <li class="project-post-item">
-              <a href="https://github.com/AnkitaPimpalkar08/personal_assistant" target="_blank">
-
-                <figure class="project-banner-box">
-                  <img src="./assets/images/personalassistant.png" alt="Design digest #80" loading="lazy" class="project-img">
-                </figure>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="section-header fade-in">
+            <div class="section-label">My Journey</div>
+            <h2 class="section-title">Experience</h2>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item fade-in">
+                <div class="company">The George Washington University</div>
+                <h3>Research Intern (AI/ML/Raspberry Pi) & Research Assistant</h3>
+                <div class="period">Feb 2025 - Present · 1 mo | Washington D.C.</div>
+                <ul>
+                    <li>Working under Prof. Eric Dano to develop Python-based NLP, AI, and ML applications for a Raspberry Pi-based sensor system as part of undergraduate Model-Based Systems Engineering (MBSE) course</li>
+                    <li>Developed multiple Raspberry Pi applications using Python, MQTT, and ML models, including real-time anomaly detection system with Streamlit dashboard, improved data efficiency by 45% and reduced false positives by 30%</li>
+                    <li>Assisting Prof. Dano for Spring 2026 Systems Engineering course, including hands-on Raspberry Pi applications and detailed capability data sheets to enhance student learning and engagement</li>
+                    <li>Collaborating with Prof. Alexa Joubin to lead migration of academic and open-education websites (joubin.org, Screening Shakespeare, Critical Theory) to WordPress (GW Blogs)</li>
+                    <li>Designing and testing UI/UX templates and multiple layout options to improve site accessibility, scalability, and user experience</li>
+                </ul>
+            </div>
+            
+            <div class="timeline-item fade-in">
+                <div class="company">Stealth Startups - GoScale, FriendSquare, Alternative Structure Group</div>
+                <h3>Software Engineer (Full-Stack)</h3>
+                <div class="period">Aug 2022 - May 2024 · 1 yr 10 mos | Remote</div>
+                <ul>
+                    <li>Designed impactful landing pages and implemented robust database for fintech startup, optimizing user experience and data management. Spearheaded technical roadmap development and provided strategic recommendations on technology stacks, tools, and techniques</li>
+                    <li>Created and managed impactful website enhancements for FriendSquare, a New Delhi-based psychology firm, including new features and landing pages. Established and maintained database to enhance technical functionality and user experience</li>
+                    <li>Crafted adaptive landing pages and database solutions for GoScale's client. Developed and managed database for student-centric website featuring diverse resources for latest technological developments through online courses and tutorials</li>
+                    <li>Used PHP for backend programming, HTML, CSS, and JavaScript for frontend development, and CodeIgniter framework for backend development</li>
+                    <li>Contributed to startup's technical roadmap development, providing recommendations on technology stacks to support company growth and mission</li>
+                    <li>Maintained up-to-date knowledge of industry trends and emerging technologies, applying knowledge to improve efficiency and effectiveness of software development processes</li>
+                </ul>
+            </div>
+            
+            <div class="timeline-item fade-in">
+                <div class="company">Cognizant Technology Solutions</div>
+                <h3>Programming Analyst</h3>
+                <div class="period">Jun 2021 - Jul 2022 · 1 yr 2 mos | Pune, India</div>
+                <ul>
+                    <li>Improved client satisfaction by developing customized development plan meeting specific requirements, resulting in 95% client retention rate</li>
+                    <li>Completed projects on time and within budget by implementing strict project management methodology, resulting in 100% on-time delivery rate and 20% reduction in project costs</li>
+                    <li>Developed efficient and scalable code improving system performance and reducing errors by 25%</li>
+                    <li>Successfully packaged and deployed over 100 applications using PowerShell scripting, SCCM deployment, SCCM driver packaging, and Intune packaging, resulting in 99% success rate</li>
+                    <li>Reduced application installation time by 50% by implementing silent installation using VB-Scripts and batch scripting</li>
+                    <li>Managed and maintained large databases with over 10,000 records, resulting in 99.99% uptime and 100% data integrity</li>
+                </ul>
+            </div>
+            
+            <div class="timeline-item fade-in">
+                <div class="company">Root Kings</div>
+                <h3>Web Developer</h3>
+                <div class="period">Nov 2020 - May 2021 · 7 mos | Nagpur, Maharashtra, India (Remote)</div>
+                <ul>
+                    <li>Developed Superrfan-App, a celebrity game-based social media platform, using Vue.js, JavaScript, and HTML</li>
+                    <li>Built application functionality allowing users to create teams and rate selected team members</li>
+                    <li>Implemented reward and monetary system based on user ratings and team performance</li>
+                    <li>Successfully launched Superrfan-App, resulting in significant increase in user engagement and platform traffic</li>
+                    <li>Continuously maintained and improved application, ensuring smooth operation and user satisfaction</li>
+                    <li>Collaborated with team of designers and developers to create seamless user experience and visually appealing interface</li>
+                    <li>Demonstrated exceptional problem-solving skills in resolving technical issues and bugs</li>
+                    <li>Effectively communicated with stakeholders and team members to gather requirements and provide updates on project progress</li>
+                </ul>
+            </div>
+            
+            <div class="timeline-item fade-in">
+                <div class="company">Talent Anywhere</div>
+                <h3>Software Engineer (PHP)</h3>
+                <div class="period">Aug 2020 - Nov 2020 · 4 mos | Pune, Maharashtra, India</div>
+                <ul>
+                    <li>Successfully developed high-performance platforms called Gujarati Sahitya Forum and NS4ED using PHP, CodeIgniter framework, HTML, CSS, and JavaScript</li>
+                    <li>Implemented features such as user authentication, user management, and content management systems to enhance platform functionality and usability</li>
+                    <li>Optimized website performance, resulting in faster load times and improved user experience</li>
+                    <li>Collaborated with team members to ensure successful completion of project milestones within set deadlines</li>
+                    <li>Conducted thorough testing and debugging to ensure platform was bug-free and ready for deployment</li>
+                    <li>Demonstrated proficiency in programming languages and frameworks, leading to increased efficiency and productivity</li>
+                    <li>Contributed to development of best practices and coding standards, resulting in streamlined development process</li>
+                    <li>Received positive feedback from users on platform's design, functionality, and user experience</li>
+                </ul>
+            </div>
+            
+            <div class="timeline-item fade-in">
+                <div class="company">Maxgen Technologies</div>
+                <h3>Junior Java Developer</h3>
+                <div class="period">Jan 2020 - Jun 2020 · 6 mos | Pune, Maharashtra, India</div>
+                <ul>
+                    <li>Designed and developed dynamic and responsive web pages using Java, HTML, CSS, and JavaScript</li>
+                    <li>Reviewed code and debugged errors to ensure software applications were of high quality and error-free</li>
+                    <li>Collaborated with cross-functional teams to ensure seamless integration of front-end and back-end systems</li>
+                    <li>Implemented new features and functionalities to improve website's user experience</li>
+                    <li>Demonstrated ability to work under tight deadlines and deliver high-quality results on time</li>
+                    <li>Served as dedicated and supportive intern in fast-paced environment</li>
+                </ul>
+            </div>
+            
+            <div class="timeline-item fade-in">
+                <div class="company">CDAC - Centre for Development of Advanced Computing</div>
+                <h3>PHP Trainee</h3>
+                <div class="period">May 2018 - Jun 2018 · 2 mos | Chandigarh, India</div>
+                <ul>
+                    <li>Garnered hands-on experience in PHP, JavaScript, HTML, and CSS programming languages</li>
+                    <li>Analyzed and designed new systems and applications</li>
+                    <li>Brought forth passion and dedication to software development</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-header fade-in">
+            <div class="section-label">What I've Built</div>
+            <h2 class="section-title">Featured Projects</h2>
+        </div>
+        
+        <div class="projects-grid">
+            <div class="project-card fade-in">
+                <div class="project-content">
+                    <h3>EchoSense: Environmental Sound Classification</h3>
+                    <p>End-to-end deep learning pipeline for environmental sound classification with ResNet-based CNN architecture. Includes automated mel-spectrogram generation, intermediate layer visualization, TensorBoard integration, and real-time prediction interface. Trained on Modal cloud GPU (A10G).</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">Modal</span>
+                        <span class="tech-tag">ResNet</span>
+                        <span class="tech-tag">TensorBoard</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/AnkitaPimpalkar08/EchoSense-main" target="_blank" title="View on GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card fade-in">
+                <div class="project-content">
+                    <h3>Real-Time Anomaly Detection System</h3>
+                    <p>Built streaming data pipeline using Python and MQTT processing 200,000+ IoT sensor observations. Implemented Isolation Forest with 10-sample rolling window for edge deployment. Developed Streamlit dashboard for live monitoring with 45% compute overhead reduction on Raspberry Pi 4 (1GB RAM).</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">MQTT</span>
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">Isolation Forest</span>
+                        <span class="tech-tag">Raspberry Pi</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/AnkitaPimpalkar08/AnomalyDetection_RaspberryPi" target="_blank" title="View on GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card fade-in">
+                <div class="project-content">
+                    <h3>GreenShoes E-Commerce Platform</h3>
+                    <p>Full-stack e-commerce website with product catalog, advanced filtering, shopping cart, and user authentication. Designed PostgreSQL database schema for order management and inventory tracking. Built responsive frontend using React and Tailwind CSS with REST APIs for seamless user experience.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Vite</span>
+                        <span class="tech-tag">Tailwind CSS</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/AnkitaPimpalkar08/greenshoes-eco-shoe-store-frontend" target="_blank" title="View on GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card fade-in">
+                <div class="project-content">
+                    <h3>Soil Sensor Application</h3>
+                    <p>Raspberry Pi-based IoT application for real-time soil monitoring using environmental sensors. Implemented data collection, processing, and visualization for agricultural automation and smart farming applications.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Raspberry Pi</span>
+                        <span class="tech-tag">IoT</span>
+                        <span class="tech-tag">Sensors</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/AnkitaPimpalkar08/Soil-sensor-application" target="_blank" title="View on GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card fade-in">
+                <div class="project-content">
+                    <h3>Social Media and Mental Health Analysis</h3>
+                    <p>Data science project analyzing the relationship between social media usage patterns and mental health indicators. Implemented statistical analysis, data visualization, and machine learning models to identify correlations and trends.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">Matplotlib</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/AnkitaPimpalkar08/SocialMediaAndMentalHealthAnalysis" target="_blank" title="View on GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card fade-in">
+                <div class="project-content">
+                    <h3>Handwritten Character Recognition</h3>
+                    <p>CNN-based expert system for handwritten character recognition using Artificial Neural Networks. Achieved 96% test accuracy on MNIST dataset with comprehensive calibration analysis. Implemented confidence distribution analysis and error pattern visualization.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">CNN</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/AnkitaPimpalkar08/HandwrittenCharacterRecognition" target="_blank" title="View on GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card fade-in">
+                <div class="project-content">
+                    <h3>AI Personal Voice Assistant</h3>
+                    <p>Voice-activated personal assistant helping less tech-savvy users interact with computers. Implements note-taking, music playback from YouTube Music, weather information fetching, and basic calculations. Works similarly to Siri/Google Assistant for desktop use.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">Voice Recognition</span>
+                        <span class="tech-tag">APIs</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/AnkitaPimpalkar08/Personal_assistant" target="_blank" title="View on GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card fade-in">
+                <div class="project-content">
+                    <h3>Superrfan-App</h3>
+                    <p>Celebrity game-based social media platform where users create teams, rate team members, and earn rewards based on performance. Built with Vue.js for seamless user experience and implemented comprehensive reward and monetary systems.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">HTML/CSS</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card fade-in">
+                <div class="project-content">
+                    <h3>NS4ED Educational Platform</h3>
+                    <p>Stand-alone application providing quality leadership, research, and guidance to identify and promote best practices in teaching and learning. Developed using PHP and CodeIgniter framework with comprehensive CMS features.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">CodeIgniter</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card fade-in">
+                <div class="project-content">
+                    <h3>Gujarati Sahitya Forum</h3>
+                    <p>Global platform connecting Gujarati people worldwide to their cultural roots. Features local chapter management, event organization, and community building. Each chapter serves as a node in a global network keeping Gujarati culture alive internationally.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">CodeIgniter</span>
+                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card fade-in">
+                <div class="project-content">
+                    <h3>Humbleshit-App</h3>
+                    <p>Task management application designed for organizations handling cleaning and maintenance operations. Enables efficient tracking of washroom maintenance tasks with real-time updates and assignment management.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">CSS</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card fade-in">
+                <div class="project-content">
+                    <h3>E-Commerce Platform with Payment Integration</h3>
+                    <p>Business model e-commerce website selling consumer goods and digital media. Implemented PayU Money payment integration, shopping cart, wishlist, recently viewed items, order tracking, and cancellation functionality using Java, Hibernate, JSP, and Servlets.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Hibernate</span>
+                        <span class="tech-tag">JSP</span>
+                        <span class="tech-tag">Servlets</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="section-header fade-in">
+            <div class="section-label">Credentials</div>
+            <h2 class="section-title">Licenses & Certifications</h2>
+        </div>
+        
+        <div class="skills-grid">
+            <div class="skill-card fade-in">
+                <div class="icon"><i class="fab fa-redhat"></i></div>
+                <h3>Red Hat System Administration I (RH124 - RHA)</h3>
+                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Red Hat · Ver. 9.3</p>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Issued Apr 2025</p>
+            </div>
+            
+            <div class="skill-card fade-in">
+                <div class="icon"><i class="fab fa-aws"></i></div>
+                <h3>AWS Academy Graduate - AWS Academy Cloud Operations</h3>
+                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Amazon Web Services (AWS)</p>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Issued Apr 2025</p>
+            </div>
+            
+            <div class="skill-card fade-in">
+                <div class="icon"><i class="fab fa-aws"></i></div>
+                <h3>AWS Academy Graduate - AWS Academy Cloud Foundations</h3>
+                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Amazon Web Services (AWS)</p>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Issued Feb 2025</p>
+                <div class="skill-tags" style="margin-top: 1rem;">
+                    <span class="tag">AWS Architecture</span>
+                    <span class="tag">AWS Cloud</span>
+                </div>
+            </div>
+            
+            <div class="skill-card fade-in">
+                <div class="icon"><i class="fas fa-code"></i></div>
+                <h3>Java Programming</h3>
+                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Udemy</p>
+                <div class="skill-tags" style="margin-top: 1rem;">
+                    <span class="tag">Java</span>
+                </div>
+            </div>
+            
+            <div class="skill-card fade-in">
+                <div class="icon"><i class="fab fa-linkedin"></i></div>
+                <h3>Learning C</h3>
+                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">LinkedIn Learning</p>
+            </div>
+            
+            <div class="skill-card fade-in">
+                <div class="icon"><i class="fab fa-python"></i></div>
+                <h3>Python Programming</h3>
+                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Udemy</p>
+                <div class="skill-tags" style="margin-top: 1rem;">
+                    <span class="tag">Python</span>
+                </div>
+            </div>
+            
+            <div class="skill-card fade-in">
+                <div class="icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Programming Using Python</h3>
+                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">DataCamp</p>
+            </div>
+            
+            <div class="skill-card fade-in">
+                <div class="icon"><i class="fab fa-java"></i></div>
+                <h3>Object Oriented Programming in Java</h3>
+                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Coursera</p>
+                <div class="skill-tags" style="margin-top: 1rem;">
+                    <span class="tag">Java</span>
+                    <span class="tag">OOP</span>
+                </div>
+            </div>
+            
+            <div class="skill-card fade-in">
+                <div class="icon"><i class="fas fa-database"></i></div>
+                <h3>SQL Fundamentals</h3>
+                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">DataCamp</p>
+                <div class="skill-tags" style="margin-top: 1rem;">
+                    <span class="tag">SQL</span>
+                </div>
+            </div>
+            
+            <div class="skill-card fade-in">
+                <div class="icon"><i class="fas fa-sync-alt"></i></div>
+                <h3>Introduction to Iterative Programming in Python</h3>
+                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Coursera</p>
+                <div class="skill-tags" style="margin-top: 1rem;">
+                    <span class="tag">Python</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <div class="section-header fade-in">
+            <div class="section-label">Kind Words</div>
+            <h2 class="section-title">Testimonials</h2>
+        </div>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial fade-in">
+                <p>"Throughout her time at Cognizant, Ankita's ability to handle complex technical challenges, coupled with her relentless commitment to producing high-quality work, set her apart as an outstanding professional. What truly distinguishes Ankita is not only her technical acumen but also her exceptional interpersonal and communication skills. Her contributions extended beyond the scope of her role, reflecting a deep commitment to the success of our collective objectives. Working with Ankita has been one of the most enriching and rewarding teamwork experiences I've had and I would, without hesitation, welcome her on any team I am part of."</p>
+                <div class="testimonial-author">Akash Bhandari</div>
+                <div class="testimonial-role">Senior Manager, Cognizant Technology Solutions</div>
+            </div>
+            
+            <div class="testimonial fade-in">
+                <p>"I had the pleasure of working with Ankita on multiple projects, and she has consistently impressed me with her dedication and skills. She takes complete ownership of her tasks, ensuring high-quality deliverables every time. Her ability to stay focused, take a stand when needed, and adapt to new challenges is truly commendable. What sets her apart is her eagerness to learn and willingness to step beyond conventional tasks, always bringing creative solutions to the table. Beyond her technical excellence, she makes the work environment lively and engaging, making even the toughest tasks enjoyable. She is a fantastic colleague to have, and I highly recommend her!"</p>
+                <div class="testimonial-author">Yash Kurzekar</div>
+                <div class="testimonial-role">Colleague, Cognizant Technology Solutions</div>
+            </div>
+            
+            <div class="testimonial fade-in">
+                <p>"Ankita and I worked together in Cognizant, and I was lucky to call her my coworker. She consistently gave 100 percent effort to the team and played a significant role in ensuring that we completed assignments on time. She had excellent time management skills and had a knack for keeping everyone calm and productive during intense crunch periods. Any team would be lucky to have her, and I couldn't recommend her more for any business looking for new talent."</p>
+                <div class="testimonial-author">Shubham Gurjar</div>
+                <div class="testimonial-role">Colleague, Cognizant Technology Solutions</div>
+            </div>
+            
+            <div class="testimonial fade-in">
+                <p>"It is my pleasure to write this recommendation for my colleague Ankita, whom I have had the pleasure of working alongside at Cognizant. Ankita is a highly skilled and dedicated professional who always goes above and beyond in everything she does. She is an excellent communicator and has a talent for bringing people together to work towards a common goal. What sets Ankita apart is her ability to think strategically and find innovative solutions to complex problems. She is a natural leader who inspires those around her to work harder and smarter to achieve their goals. Throughout our time working together, she has consistently shown her exceptional work ethic and leadership qualities. She is a true team player who is always willing to lend a helping hand to colleagues and goes the extra mile to ensure the success of our team's projects. I have no doubt that Ankita will make a valuable contribution to any organization she works with, and I wholeheartedly recommend her for any future opportunities."</p>
+                <div class="testimonial-author">Samiksha Chintawar</div>
+                <div class="testimonial-role">Colleague, Cognizant Technology Solutions</div>
+            </div>
+            
+            <div class="testimonial fade-in">
+                <p>"I am thrilled to write this recommendation for my former classmate, Ankita whom I had the pleasure of working with on several group projects during our time at Chandigarh University. Ankita was an outstanding team member who consistently demonstrated exceptional teamwork, communication, and leadership skills. She was able to effectively manage multiple responsibilities and ensured that all team members were working together cohesively towards a common goal. What impressed me most about Ankita was her ability to think creatively and find innovative solutions to complex problems. She was always willing to go above and beyond to ensure that our team's projects were delivered to the highest standards. Throughout our time working together, she showed a great deal of enthusiasm, professionalism, and dedication to our team's success. She was always willing to listen to other team members' ideas and provide valuable feedback."</p>
+                <div class="testimonial-author">Raju Mondal</div>
+                <div class="testimonial-role">Classmate, Chandigarh University</div>
+            </div>
+            
+            <div class="testimonial fade-in">
+                <p>"Firstly, I would particularly mention that it brings me immense pleasure to recommend Ankita, a brilliant learner, supportive colleague and a hardworking lady. I have had this privilege to work with her during her initial phase of working with Cognizant. She was one of the most curious and quick learners I have ever came across. Not just that but she was among those rare hardworking Gems who just deny to give up and try to best of their efforts in every single task they perform. It is a proud feeling to see her outstanding journey since that time. Also, the exceptionally increasing graph of her new skills and achievements are truly remarkable. I think Ankita is an individual who will just never fail to add more value to the work she will do with her smart ways. More power to her and yes long way to go. All the best !!"</p>
+                <div class="testimonial-author">Shruti Nimbarmunde</div>
+                <div class="testimonial-role">Colleague, Cognizant Technology Solutions</div>
+            </div>
+            
+            <div class="testimonial fade-in">
+                <p>"It is with great enthusiasm that I recommend Ankita for a position in Web Application Development. She is highly skilled and always eager to explore and experiment. Her diligence and keen eye for details is an asset for every team that Ankita is a part of."</p>
+                <div class="testimonial-author">Krushn Dayshmookh</div>
+                <div class="testimonial-role">Professional Colleague</div>
+            </div>
+            
+            <div class="testimonial fade-in">
+                <p>"I highly recommend Ankita for a role in the technology. She has a passion for innovation and experimentation, and has a proven track record of effectively utilizing her critical thinking and decision-making skills in her work. Her strong work ethic and ability to collaborate with others make her well-suited for a role that requires teamwork and problem-solving. I believe her creative talents will prove to be a valuable resource for any organization."</p>
+                <div class="testimonial-author">Sakshi Rajput</div>
+                <div class="testimonial-role">Professional Colleague</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header fade-in">
+            <div class="section-label">Let's Connect</div>
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">
+                I'm actively seeking full-time software engineering opportunities (Backend, Frontend, Full-Stack, AI/ML) starting May 2026. Let's discuss how I can contribute to your team!
+            </p>
+        </div>
+        
+        <div class="contact-container">
+            <div class="contact-grid">
+                <div class="contact-item fade-in">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <a href="mailto:apimpalkar707@gmail.com">apimpalkar707@gmail.com</a>
+                </div>
                 
-
-                <div class="project-content">
-                  <div class="project-meta">
-                   
-                  </div>
-
-                  <h3 class="h3 project-item-title">Personal Assistant</h3>
-
-                  <p class="project-text">
-                    This project is a simple voice-activated personal assistant built using Python. It can perform various tasks such as taking notes, playing music from YouTube Music, fetching weather information, and performing basic calculations.</p>
-
+                <div class="contact-item fade-in">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>Washington D.C., USA</p>
                 </div>
-
-              </a>
-            </li>
-
-            
-
-            <li class="project-post-item">
-              <a href="https://github.com/AnkitaPimpalkar08/HandwrittenCharacterRecognition" target="_blank">
-
-                <figure class="project-banner-box">
-                  <img src="./assets/images/HCR.png" alt="Design digest #80" loading="lazy" class="project-img">
-                </figure>
-
-                <div class="project-content">
-                  <div class="project-meta">
-                   
-                  </div>
-
-                  <h3 class="h3 project-item-title">Handwritten Character Recognition</h3>
-
-                  <p class="project-text">
-                    This project focuses on developing a system capable of recognizing and interpreting handwritten characters. The main goals of such a project are to transform handwritten text into a digital format, which can be processed by computers for a wide range of applications such as digitizing documents, automating data entry, and enhancing accessibility tools.</p>
-
+                
+                <div class="contact-item fade-in">
+                    <i class="fab fa-linkedin"></i>
+                    <h3>LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/ankita-pimpalkar-7510a9174/" target="_blank">Connect with me</a>
                 </div>
-
-              </a>
-            </li>
-
-
-            <li class="project-post-item">
-              <a href="https://github.com/AnkitaPimpalkar08/TaskManager" target="_blank">
-
-                <figure class="project-banner-box">
-                  <img src="./assets/images/taskmanager.png" alt="The forgotten art of spacing" loading="lazy">
-                </figure>
-
-                <div class="project-content">
-
-                  <div class="project-meta">
-                  </div>
-
-                  <h3 class="h3 project-item-title">Task Manager</h3>
-
-                  <p class="project-text">
-                    The Task Manager project is designed to help users efficiently manage and organize their tasks through a simple and user-friendly interface. This project enables users to create, view, update, and delete tasks, providing an intuitive way to stay on top of their to-do list and priorities. </p>
-                </div>
-
-              </a>
-            </li>
-          </ul>
-
-        </section>
-
-      </article>
-
-
-
-
-
-      <!--
-        - #CONTACT
-      -->
-
-      <article class="contact" data-page="contact">
-
-        <header>
-          <h2 class="h2 article-title">Contact</h2>
-        </header>
-
-        <section class="mapbox" data-mapbox>
-          <figure>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.0727975730126!2d-77.06463178465014!3d38.863920279573886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b69fba520c4f%3A0x453b5445730fefc2!2s1111%20Army%20Navy%20Dr%2C%20Arlington%2C%20VA%2022202%2C%20USA!5e0!3m2!1sen!2sin!4v1712394825936!5m2!1sen!2sin"
-              width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-              width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </figure>
-        </section>
-
-
-        <section class="contact-form">
-
-          <h3 class="h3 form-title">Contact Form</h3>
-
-          <form action="https://api.web3forms.com/submit" method="POST" class="form" data-form>
-
-            <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
             </div>
-
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
-            <input type="hidden" name="access_key" value="e2e13dea-21ba-444e-ab13-1144052169ad">
-            <button class="form-btn" type="submit" disabled data-form-btn>
-              <ion-icon name="paper-plane"></ion-icon>
-              <span>Send Message</span>
-            </button>
-
-          </form>
-
-        </section>
-
-      </article>
-
-    </div>
-
-  </main>
-
-
-
-
-
-
-  <!--
-    - custom js link
-  -->
-  <script src="./assets/js/script.js"></script>
-
-  <!--
-    - ionicon link
-  -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
+            
+            <div class="cta-buttons" style="justify-content: center; margin-top: 3rem;">
+                <a href="mailto:apimpalkar707@gmail.com" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </a>
+                <a href="AnkitaVilasPimpalkar_Resume.pdf" download class="btn btn-secondary">
+                    <i class="fas fa-download"></i> Download Resume
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Ankita Vilas Pimpalkar. Crafted with passion and precision.</p>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+        
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Active Nav Link on Scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
-
 </html>
