@@ -3,1424 +3,1429 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ankita Vilas Pimpalkar | Software Engineer | Full-Stack Developer | AI/ML</title>
-    
-    <!-- Fonts -->
+    <title>AnkitaFlix — Stream My Career</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=DM+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         :root {
-            /* Color Palette - Deep Ocean Tech */
-            --primary-dark: #0a0e27;
-            --primary-blue: #1a2332;
-            --accent-coral: #ff6b6b;
-            --accent-amber: #ffd93d;
-            --accent-teal: #6bcf9f;
-            --text-light: #e8edf4;
-            --text-muted: #8b95a8;
-            --card-bg: rgba(26, 35, 50, 0.6);
-            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --bg: #141414;
+            --bg-card: #1a1a1a;
+            --bg-hover: #222;
+            --bg-modal: #181818;
+            --red: #e50914;
+            --red-hover: #f6121d;
+            --white: #ffffff;
+            --text: #e5e5e5;
+            --text-muted: #999;
+            --text-dim: #666;
+            --green: #46d369;
+            --gold: #f5c518;
+            --radius: 6px;
+            --shadow: 0 8px 40px rgba(0,0,0,0.6);
+            --transition: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--primary-dark);
-            color: var(--text-light);
-            line-height: 1.7;
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
-        
-        /* Animated Background */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.15;
-        }
-        
-        .bg-animation::before {
-            content: '';
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, var(--accent-coral) 0%, transparent 70%);
-            top: 10%;
-            right: 10%;
-            border-radius: 50%;
-            animation: float 20s infinite ease-in-out;
-            filter: blur(80px);
-        }
-        
-        .bg-animation::after {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--accent-teal) 0%, transparent 70%);
-            bottom: 10%;
-            left: 10%;
-            border-radius: 50%;
-            animation: float 25s infinite ease-in-out reverse;
-            filter: blur(100px);
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(50px, 80px); }
-        }
-        
-        /* Navigation */
+        ::selection { background: var(--red); color: white; }
+
+        /* ═══ SCROLLBAR ═══ */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #666; }
+
+        /* ═══ NAVIGATION ═══ */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.5rem 5%;
-            background: rgba(10, 14, 39, 0.8);
-            backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        nav .container {
-            max-width: 1400px;
-            margin: 0 auto;
+            padding: 0 4%;
+            height: 68px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            transition: background 0.4s;
         }
-        
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-light);
-            letter-spacing: -0.5px;
-        }
-        
-        .nav-links {
+        nav.scrolled { background: rgba(20,20,20,0.95); backdrop-filter: blur(10px); }
+        .nav-inner {
+            max-width: 1920px;
+            margin: 0 auto;
+            width: 100%;
             display: flex;
-            gap: 2.5rem;
-            list-style: none;
+            align-items: center;
+            justify-content: space-between;
         }
-        
+        .nav-brand {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--red);
+            letter-spacing: 2px;
+            text-decoration: none;
+            text-shadow: 2px 2px 8px rgba(229,9,20,0.4);
+        }
+        .nav-links { display: flex; gap: 1.8rem; list-style: none; align-items: center; }
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
+            font-size: 0.85rem;
             font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-            position: relative;
+            transition: color 0.2s;
         }
-        
-        .nav-links a::after {
+        .nav-links a:hover { color: var(--white); }
+        .nav-right { display: flex; align-items: center; gap: 1.2rem; }
+        .nav-status {
+            display: flex; align-items: center; gap: 0.4rem;
+            font-size: 0.75rem; color: var(--green);
+        }
+        .nav-status::before {
             content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-coral);
-            transition: width 0.3s;
+            width: 8px; height: 8px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
         }
-        
-        .nav-links a:hover {
-            color: var(--text-light);
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
         }
-        
-        .nav-links a:hover::after {
-            width: 100%;
+        .nav-avatar {
+            width: 32px; height: 32px;
+            border-radius: 4px;
+            background: linear-gradient(135deg, var(--red), #b20710);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.9rem; color: white;
+            cursor: pointer;
         }
-        
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 8rem 5% 4rem;
+        .mobile-toggle {
+            display: none; background: none; border: none;
+            color: var(--white); font-size: 1.5rem; cursor: pointer;
+        }
+
+        /* ═══ HERO BILLBOARD ═══ */
+        .billboard {
             position: relative;
-        }
-        
-        .hero-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        
-        .hero-content h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--text-light) 0%, var(--accent-teal) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero-content .tagline {
-            font-size: 1.5rem;
-            color: var(--accent-coral);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .hero-content p {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-            max-width: 600px;
-            line-height: 1.8;
-        }
-        
-        .cta-buttons {
+            height: 90vh;
+            min-height: 600px;
             display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
+            align-items: flex-end;
+            padding: 0 4% 8%;
+            overflow: hidden;
         }
-        
-        .btn {
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s;
+        .billboard-bg {
+            position: absolute; inset: 0;
+            background:
+                linear-gradient(to top, var(--bg) 0%, transparent 50%),
+                linear-gradient(to right, rgba(20,20,20,0.9) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 30%, rgba(229,9,20,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(70,211,105,0.08) 0%, transparent 50%),
+                var(--bg);
+        }
+        /* Animated code rain effect */
+        .billboard-code {
+            position: absolute;
+            top: 0; right: 0;
+            width: 50%; height: 100%;
+            overflow: hidden;
+            opacity: 0.06;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--green);
+            line-height: 1.8;
+            pointer-events: none;
+        }
+        .code-col {
+            position: absolute;
+            top: -100%;
+            animation: codeRain linear infinite;
+            white-space: nowrap;
+        }
+        .code-col:nth-child(1) { left: 5%; animation-duration: 18s; animation-delay: 0s; }
+        .code-col:nth-child(2) { left: 20%; animation-duration: 22s; animation-delay: 3s; }
+        .code-col:nth-child(3) { left: 35%; animation-duration: 20s; animation-delay: 1s; }
+        .code-col:nth-child(4) { left: 50%; animation-duration: 25s; animation-delay: 5s; }
+        .code-col:nth-child(5) { left: 65%; animation-duration: 19s; animation-delay: 2s; }
+        .code-col:nth-child(6) { left: 80%; animation-duration: 23s; animation-delay: 4s; }
+        @keyframes codeRain {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(200vh); }
+        }
+
+        .billboard-content {
+            position: relative;
+            z-index: 2;
+            max-width: 650px;
+        }
+        .billboard-badge {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            border: none;
-            cursor: pointer;
+            background: rgba(229,9,20,0.15);
+            border: 1px solid rgba(229,9,20,0.3);
+            border-radius: 4px;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--red);
+            margin-bottom: 1.2rem;
+            opacity: 0;
+            animation: fadeIn 0.6s 0.3s forwards;
         }
-        
-        .btn-primary {
-            background: var(--accent-coral);
-            color: white;
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+        .billboard-badge i { font-size: 0.65rem; }
+        .billboard-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(4rem, 8vw, 7rem);
+            line-height: 0.95;
+            letter-spacing: 3px;
+            color: var(--white);
+            margin-bottom: 0.8rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            opacity: 0;
+            animation: slideUp 0.8s 0.1s forwards;
         }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-light);
-            border: 2px solid var(--accent-teal);
-        }
-        
-        .btn-secondary:hover {
-            background: var(--accent-teal);
-            transform: translateY(-2px);
-        }
-        
-        .hero-image {
-            position: relative;
-        }
-        
-        .profile-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 2.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-        
-        .profile-card img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1.5rem;
-            border: 4px solid var(--accent-coral);
-        }
-        
-        .profile-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .profile-card .role {
-            color: var(--accent-teal);
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        
-        .social-links a {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
+        .billboard-title span { color: var(--red); }
+        .billboard-meta {
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: var(--text-light);
-            transition: all 0.3s;
-        }
-        
-        .social-links a:hover {
-            background: var(--accent-coral);
-            transform: translateY(-3px);
-        }
-        
-        /* Section Styles */
-        section {
-            padding: 6rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .section-label {
-            font-family: 'Fira Code', monospace;
-            color: var(--accent-coral);
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        
-        .section-subtitle {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        /* Skills Grid */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        
-        .skill-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s;
-        }
-        
-        .skill-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-coral);
-        }
-        
-        .skill-card .icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .skill-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-        
-        .tag {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
+            gap: 1rem;
             font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-        
-        /* Experience Timeline */
-        .timeline {
-            position: relative;
-            padding-left: 3rem;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--accent-coral), var(--accent-teal));
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin-bottom: 3rem;
-            padding-left: 2rem;
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -3.5rem;
-            top: 0;
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background: var(--accent-coral);
-            border: 3px solid var(--primary-dark);
-        }
-        
-        .timeline-item .company {
-            font-size: 0.9rem;
-            color: var(--accent-teal);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .timeline-item h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .timeline-item .period {
-            color: var(--text-muted);
-            font-size: 0.95rem;
             margin-bottom: 1rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeIn 0.6s 0.5s forwards;
         }
-        
-        .timeline-item ul {
-            list-style: none;
-            padding-left: 0;
+        .match { color: var(--green); font-weight: 700; }
+        .rating {
+            border: 1px solid var(--text-muted);
+            padding: 0.1rem 0.4rem;
+            font-size: 0.7rem;
+            border-radius: 2px;
         }
-        
-        .timeline-item li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.8rem;
-            color: var(--text-muted);
+        .billboard-desc {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--text);
+            margin-bottom: 1.8rem;
+            max-width: 550px;
+            opacity: 0;
+            animation: fadeIn 0.6s 0.7s forwards;
         }
-        
-        .timeline-item li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--accent-coral);
+        .billboard-actions {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeIn 0.6s 0.9s forwards;
         }
-        
-        /* Projects Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-        
-        .project-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s;
+        .btn-play {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.7rem 2rem;
+            background: var(--white);
+            color: #111;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            border-radius: var(--radius);
             cursor: pointer;
+            transition: all var(--transition);
+            text-decoration: none;
+        }
+        .btn-play:hover { background: #ddd; transform: scale(1.03); }
+        .btn-play i { font-size: 1.2rem; }
+        .btn-info {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.7rem 1.8rem;
+            background: rgba(109,109,110,0.7);
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all var(--transition);
+            text-decoration: none;
+        }
+        .btn-info:hover { background: rgba(109,109,110,0.5); }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ═══ CATEGORY ROW ═══ */
+        .category {
+            padding: 0 4%;
+            margin-bottom: 2.5rem;
             position: relative;
         }
-        
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-coral), var(--accent-teal));
+        .category-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .category-title .explore {
+            font-size: 0.8rem;
+            color: var(--red);
+            font-weight: 500;
             opacity: 0;
             transition: opacity 0.3s;
         }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-            border-color: var(--accent-coral);
-        }
-        
-        .project-card:hover::before {
-            opacity: 1;
-        }
-        
-        .project-content {
-            padding: 2rem;
-        }
-        
-        .project-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .project-content p {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-        
-        .project-tech {
+        .category:hover .explore { opacity: 1; }
+
+        .carousel {
             display: flex;
-            flex-wrap: wrap;
             gap: 0.5rem;
-            margin-bottom: 1.5rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 1rem;
+            scrollbar-width: none;
         }
-        
-        .tech-tag {
-            background: rgba(108, 207, 159, 0.2);
-            color: var(--accent-teal);
-            padding: 0.4rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            font-family: 'Fira Code', monospace;
+        .carousel::-webkit-scrollbar { display: none; }
+
+        /* ═══ SHOW CARD ═══ */
+        .card {
+            flex: 0 0 auto;
+            width: 240px;
+            aspect-ratio: 16/9;
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            scroll-snap-align: start;
+            transition: transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1), z-index 0s 0.35s;
         }
-        
-        .project-links {
+        .card:hover {
+            transform: scale(1.35);
+            z-index: 20;
+            transition: transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1), z-index 0s;
+        }
+        .card-bg {
+            position: absolute; inset: 0;
             display: flex;
-            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-align: center;
+            padding: 1rem;
+            line-height: 1.2;
+            transition: opacity 0.3s;
         }
-        
-        .project-link {
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: color 0.3s;
-        }
-        
-        .project-link:hover {
-            color: var(--accent-coral);
-        }
-        
-        /* Testimonials */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin: 0 auto;
-        }
-        
-        .testimonial {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s;
+        .card:hover .card-bg { opacity: 0; }
+        .card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.97) 0%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0.7) 100%);
+            padding: 0.8rem;
             display: flex;
             flex-direction: column;
-            height: 100%;
+            justify-content: flex-end;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
-        
-        .testimonial:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-teal);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-        
-        .testimonial p {
-            font-size: 1rem;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-            font-style: italic;
-            color: var(--text-muted);
-            flex-grow: 1;
-        }
-        
-        .testimonial-author {
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: var(--text-light);
+        .card:hover .card-overlay { opacity: 1; }
+        .card-title {
+            font-size: 0.75rem;
+            font-weight: 700;
             margin-bottom: 0.3rem;
+            line-height: 1.2;
         }
-        
-        .testimonial-role {
-            color: var(--accent-teal);
-            font-size: 0.9rem;
+        .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
         }
-        
-        /* Contact Section */
-        .contact-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
+        .card-meta .match-sm { color: var(--green); font-weight: 700; }
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
         }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+        .card-tag {
+            font-size: 0.55rem;
+            padding: 0.15rem 0.35rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            color: var(--text-muted);
         }
-        
-        .contact-item {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .card-actions {
+            position: absolute;
+            bottom: 0.5rem; right: 0.5rem;
+            display: flex; gap: 0.3rem;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
-        
-        .contact-item i {
-            font-size: 2rem;
-            color: var(--accent-coral);
-            margin-bottom: 1rem;
-        }
-        
-        .contact-item h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .contact-item a {
-            color: var(--accent-teal);
+        .card:hover .card-actions { opacity: 1; }
+        .card-btn {
+            width: 26px; height: 26px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255,255,255,0.7);
+            background: rgba(0,0,0,0.6);
+            color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.55rem;
+            cursor: pointer;
+            transition: all 0.2s;
             text-decoration: none;
         }
-        
-        /* Footer */
-        footer {
-            background: var(--primary-blue);
-            padding: 3rem 5%;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        .card-btn:hover { border-color: white; background: rgba(255,255,255,0.2); }
+
+        /* Card color themes */
+        .card-ml { background: linear-gradient(135deg, #1a0a2e, #3d1859, #7b2d8e); }
+        .card-fs { background: linear-gradient(135deg, #0a1628, #1a3a5c, #2980b9); }
+        .card-data { background: linear-gradient(135deg, #0a2818, #1a5c3a, #27ae60); }
+        .card-ai { background: linear-gradient(135deg, #2a0a0a, #5c1a1a, #c0392b); }
+        .card-iot { background: linear-gradient(135deg, #1a1a0a, #3d3d1a, #f39c12); }
+        .card-web { background: linear-gradient(135deg, #0a1a2a, #1a3a5c, #3498db); }
+        .card-cert { background: linear-gradient(135deg, #1a0a1a, #3d1a3d, #8e44ad); }
+        .card-exp { background: linear-gradient(135deg, #1a1410, #3d2e1a, #d35400); }
+
+        /* ═══ EXPERIENCE ROW — WIDE CARDS ═══ */
+        .card-wide {
+            width: 360px;
+            aspect-ratio: 16/9;
         }
-        
-        footer p {
+        .card-wide .card-bg { font-size: 1.3rem; }
+        .card-wide .card-overlay { padding: 1rem; }
+        .card-wide .card-title { font-size: 0.85rem; }
+        .card-wide .card-meta { font-size: 0.7rem; }
+
+        /* ═══ TOP 10 STYLE ═══ */
+        .top10-row {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+            scrollbar-width: none;
+            counter-reset: top10;
+        }
+        .top10-row::-webkit-scrollbar { display: none; }
+        .top10-item {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: flex-end;
+            position: relative;
+            cursor: pointer;
+            counter-increment: top10;
+        }
+        .top10-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 8rem;
+            line-height: 0.75;
+            color: transparent;
+            -webkit-text-stroke: 2.5px #444;
+            margin-right: -1.5rem;
+            position: relative;
+            z-index: 2;
+            user-select: none;
+        }
+        .top10-card {
+            width: 160px;
+            height: 220px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            transition: transform 0.3s;
+        }
+        .top10-item:hover .top10-card { transform: scale(1.05); }
+        .top10-info {
+            padding: 0.6rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+        }
+        .top10-info h4 {
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+        .top10-info p {
+            font-size: 0.55rem;
             color: var(--text-muted);
         }
-        
-        /* Scroll Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease-out;
+
+        /* ═══ TESTIMONIALS ROW ═══ */
+        .testimonial-card {
+            flex: 0 0 auto;
+            width: 380px;
+            background: var(--bg-card);
+            border: 1px solid #2a2a2a;
+            border-radius: var(--radius);
+            padding: 1.8rem;
+            scroll-snap-align: start;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
         }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--red);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+            transform-origin: left;
         }
-        
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
+        .testimonial-card:hover { border-color: #444; transform: translateY(-4px); }
+        .testimonial-card:hover::before { transform: scaleX(1); }
+        .testimonial-stars {
+            color: var(--gold);
+            font-size: 0.7rem;
+            margin-bottom: 0.8rem;
+            letter-spacing: 2px;
+        }
+        .testimonial-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+            font-style: italic;
+            margin-bottom: 1.2rem;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .testimonial-avatar {
+            width: 36px; height: 36px;
+            border-radius: 4px;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.85rem;
+            color: white;
+        }
+        .testimonial-name { font-weight: 700; font-size: 0.8rem; }
+        .testimonial-role { font-size: 0.65rem; color: var(--text-dim); }
+
+        /* ═══ CONTACT / CTA BILLBOARD ═══ */
+        .cta-section {
+            padding: 8rem 4% 6rem;
+            text-align: center;
+            position: relative;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(229,9,20,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-overline {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem;
+            color: var(--red);
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+        }
+        .cta-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            letter-spacing: 3px;
+            color: var(--white);
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 550px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+        .cta-pills {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+        .cta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            border: 1px solid #333;
+            border-radius: var(--radius);
+            background: var(--bg-card);
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .cta-pill:hover { border-color: var(--red); color: var(--red); transform: translateY(-2px); }
+        .cta-pill i { font-size: 1rem; }
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.9rem 2.5rem;
+            background: var(--red);
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
             border: none;
-            color: var(--text-light);
-            font-size: 1.5rem;
+            border-radius: var(--radius);
             cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
         }
-        
-        /* Responsive */
-        @media (max-width: 968px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .hero-content h1 {
-                font-size: 3rem;
-            }
-            
-            .hero-content p {
-                margin: 0 auto 2rem;
-            }
-            
-            .cta-buttons {
-                justify-content: center;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
+        .cta-button:hover { background: var(--red-hover); transform: scale(1.03); box-shadow: 0 8px 30px rgba(229,9,20,0.3); }
+
+        /* ═══ FOOTER ═══ */
+        footer {
+            padding: 4rem 4% 2rem;
+            border-top: 1px solid #222;
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-col h4 {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .footer-col a {
+            display: block;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover { color: var(--text); }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 1px solid #222;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .footer-bottom p { font-size: 0.75rem; color: var(--text-dim); }
+        .footer-social { display: flex; gap: 1.2rem; }
+        .footer-social a {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+        .footer-social a:hover { color: var(--red); }
+
+        /* ═══ MODAL ═══ */
+        .modal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            display: none;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 3rem 1rem;
+            overflow-y: auto;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal {
+            background: var(--bg-modal);
+            border-radius: 8px;
+            width: 100%;
+            max-width: 850px;
+            overflow: hidden;
+            box-shadow: 0 20px 80px rgba(0,0,0,0.8);
+            animation: modalIn 0.3s ease-out;
+        }
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.95) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .modal-hero {
+            position: relative;
+            padding: 3rem 2.5rem 2rem;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .modal-hero-bg {
+            position: absolute; inset: 0;
+            opacity: 0.3;
+        }
+        .modal-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 60%;
+            background: linear-gradient(to top, var(--bg-modal), transparent);
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem; right: 1rem;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.6);
+            border: none;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            z-index: 5;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s;
+        }
+        .modal-close:hover { background: rgba(0,0,0,0.8); }
+        .modal-title-area { position: relative; z-index: 3; }
+        .modal-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+        .modal-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.85rem;
+            flex-wrap: wrap;
+        }
+        .modal-body { padding: 1.5rem 2.5rem 2.5rem; }
+        .modal-desc {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+        .modal-section-title {
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            color: var(--white);
+        }
+        .modal-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1.5rem;
+        }
+        .modal-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 3px;
+            background: rgba(229,9,20,0.1);
+            color: var(--red);
+            border: 1px solid rgba(229,9,20,0.15);
+        }
+        .modal-highlights {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        .modal-highlights li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            border-bottom: 1px solid #222;
+        }
+        .modal-highlights li:last-child { border-bottom: none; }
+        .modal-highlights li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--red);
+            font-weight: 700;
+        }
+        .modal-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.5rem;
+            background: var(--white);
+            color: #111;
+            font-weight: 700;
+            font-size: 0.85rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .modal-link:hover { background: #ddd; }
+
+        /* ═══ RESPONSIVE ═══ */
+        @media (max-width: 768px) {
+            .mobile-toggle { display: block; }
             .nav-links {
                 position: fixed;
-                top: 80px;
-                right: -100%;
-                width: 300px;
-                height: calc(100vh - 80px);
-                background: var(--primary-blue);
+                top: 0; right: -100%;
+                width: 100%; height: 100vh;
+                background: rgba(20,20,20,0.98);
                 flex-direction: column;
-                padding: 2rem;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
                 transition: right 0.3s;
             }
-            
-            .nav-links.active {
-                right: 0;
-            }
-            
-            .section-title {
-                font-size: 2.5rem;
-            }
-            
-            .projects-grid,
-            .skills-grid,
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 640px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-content .tagline {
-                font-size: 1.2rem;
-            }
+            .nav-links.open { right: 0; }
+            .nav-links a { font-size: 1.3rem; }
+            .billboard { height: 80vh; min-height: 500px; padding-bottom: 15%; }
+            .billboard-title { font-size: clamp(3rem, 10vw, 5rem); }
+            .card { width: 180px; }
+            .card-wide { width: 280px; }
+            .top10-number { font-size: 5rem; }
+            .top10-card { width: 120px; height: 165px; }
+            .testimonial-card { width: 300px; }
+            .modal-body, .modal-hero { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .modal-title { font-size: 1.8rem; }
+            .footer-links { gap: 1.5rem; }
+            .nav-status { display: none; }
         }
     </style>
 </head>
 <body>
-    <!-- Animated Background -->
-    <div class="bg-animation"></div>
-    
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <div class="logo">AVP</div>
-            <button class="mobile-menu-btn" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav id="mainNav">
+    <div class="nav-inner">
+        <a href="#" class="nav-brand">ANKITAFLIX</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#projects-ml">AI/ML</a></li>
+            <li><a href="#projects-fs">Full Stack</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+            <div class="nav-status">Open to Work</div>
+            <div class="nav-avatar">AP</div>
+            <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars" id="menuIcon"></i></button>
         </div>
-    </nav>
-    
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="tagline">Software Engineer | Full-Stack Developer | AI/ML</div>
-                <h1>Ankita Vilas Pimpalkar</h1>
-                <p>Building scalable software systems from backend to frontend. Experienced in full-stack development, data engineering, and deploying ML solutions. Proficient in Python, JavaScript, SQL, and modern frameworks.</p>
-                <div class="cta-buttons">
-                    <a href="#contact" class="btn btn-primary">
-                        <i class="fas fa-envelope"></i> Get In Touch
-                    </a>
-                    <a href="AnkitaVilasPimpalkar_Resume.pdf" download class="btn btn-secondary">
-                        <i class="fas fa-download"></i> Download Resume
-                    </a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="profile-card">
-                    <img src="./assets/images/profilepic.jpg" alt="Ankita Vilas Pimpalkar">
-                    <h3>Ankita Vilas Pimpalkar</h3>
-                    <p class="role">Software Engineer @ GWU</p>
-                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0;">
-                        <i class="fas fa-map-marker-alt"></i> Washington D.C., USA
-                    </p>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/ankita-pimpalkar-7510a9174/" target="_blank">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://github.com/AnkitaPimpalkar08" target="_blank">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="mailto:apimpalkar707@gmail.com">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+    </div>
+</nav>
+
+<!-- ═══ HERO BILLBOARD ═══ -->
+<section class="billboard">
+    <div class="billboard-bg"></div>
+    <div class="billboard-code">
+        <div class="code-col">def train_model():<br>&nbsp;&nbsp;model.fit(X_train)<br>&nbsp;&nbsp;return accuracy<br>import torch<br>class Network(nn.Module):<br>&nbsp;&nbsp;def forward(self):<br>&nbsp;&nbsp;&nbsp;&nbsp;return output<br>pipeline.run()</div>
+        <div class="code-col">const app = express();<br>app.get('/api', handler);<br>db.query(SQL);<br>React.useState();<br>fetch('/data')<br>.then(res =&gt; res.json())<br>export default App;</div>
+        <div class="code-col">SELECT * FROM users<br>WHERE role='engineer'<br>GROUP BY dept<br>HAVING count &gt; 10<br>ORDER BY performance<br>JOIN projects ON id<br>INSERT INTO skills;</div>
+        <div class="code-col">docker build -t app .<br>kubectl apply -f deploy<br>aws s3 cp data/<br>pip install torch<br>npm run build<br>git push origin main<br>ssh pi@raspberry</div>
+        <div class="code-col">model.predict(X_test)<br>accuracy: 0.96<br>loss: 0.0342<br>epochs: 50<br>batch_size: 32<br>lr: 0.001<br>optimizer: Adam</div>
+        <div class="code-col">CREATE TABLE jobs (<br>&nbsp;&nbsp;id SERIAL,<br>&nbsp;&nbsp;title VARCHAR,<br>&nbsp;&nbsp;status ACTIVE<br>);<br>COMMIT;<br>VACUUM ANALYZE;</div>
+    </div>
+    <div class="billboard-content">
+        <div class="billboard-badge"><i class="fas fa-bolt"></i> Now Streaming — Season 2026</div>
+        <h1 class="billboard-title">ANKITA <span>PIMPALKAR</span></h1>
+        <div class="billboard-meta">
+            <span class="match">98% Match</span>
+            <span class="rating">SWE</span>
+            <span>3+ Seasons</span>
+            <span>·</span>
+            <span>12 Episodes</span>
+            <span>·</span>
+            <span>Washington D.C.</span>
         </div>
-    </section>
-    
-    <!-- About Section -->
-    <section id="about">
-        <div class="section-header fade-in">
-            <div class="section-label">Who I Am</div>
-            <h2 class="section-title">About Me</h2>
-            <p class="section-subtitle">
-                Software engineer with 3+ years of experience building scalable web applications, data pipelines, and ML systems. Proficient in full-stack development (React, Node.js, PHP), backend engineering (Python, SQL, REST APIs), and deploying AI/ML solutions on edge and cloud platforms.
-            </p>
+        <p class="billboard-desc">
+            Software Engineer building scalable systems from backend to frontend. Blending full-stack engineering, data pipelines, and production ML. Currently at GWU — shipping AI/ML prototypes and teaching the next generation.
+        </p>
+        <div class="billboard-actions">
+            <a href="AnkitaVilasPimpalkar_Resume.pdf" download class="btn-play"><i class="fas fa-play"></i> Play Resume</a>
+            <a href="#contact" class="btn-info"><i class="fas fa-info-circle"></i> More Info</a>
         </div>
-        
-        <div class="skills-grid">
-            <div class="skill-card fade-in">
-                <div class="icon"><i class="fas fa-layer-group"></i></div>
-                <h3>Full-Stack Development</h3>
-                <p style="color: var(--text-muted); margin-bottom: 1rem;">
-                    Building end-to-end web applications with modern frameworks. Experience with React, Vue.js, Node.js, PHP/CodeIgniter, and responsive UI design.
-                </p>
-                <div class="skill-tags">
-                    <span class="tag">React</span>
-                    <span class="tag">Vue.js</span>
-                    <span class="tag">Node.js</span>
-                    <span class="tag">PHP</span>
-                    <span class="tag">HTML/CSS</span>
-                </div>
-            </div>
-            
-            <div class="skill-card fade-in">
-                <div class="icon"><i class="fas fa-server"></i></div>
-                <h3>Backend Engineering</h3>
-                <p style="color: var(--text-muted); margin-bottom: 1rem;">
-                    Designing robust backend systems, REST APIs, and database architectures. Expertise in Python, SQL, and scalable system design.
-                </p>
-                <div class="skill-tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">SQL</span>
-                    <span class="tag">REST APIs</span>
-                    <span class="tag">PostgreSQL</span>
-                    <span class="tag">MySQL</span>
-                </div>
-            </div>
-            
-            <div class="skill-card fade-in">
-                <div class="icon"><i class="fas fa-database"></i></div>
-                <h3>Data Engineering</h3>
-                <p style="color: var(--text-muted); margin-bottom: 1rem;">
-                    Building ETL pipelines, real-time data processing systems, and optimizing database queries for high-performance applications.
-                </p>
-                <div class="skill-tags">
-                    <span class="tag">ETL Pipelines</span>
-                    <span class="tag">MQTT</span>
-                    <span class="tag">Streamlit</span>
-                    <span class="tag">Data Processing</span>
-                </div>
-            </div>
-            
-            <div class="skill-card fade-in">
-                <div class="icon"><i class="fas fa-robot"></i></div>
-                <h3>AI/ML Engineering</h3>
-                <p style="color: var(--text-muted); margin-bottom: 1rem;">
-                    Implementing machine learning models for production use. Experience with TensorFlow, PyTorch, anomaly detection, and edge deployment.
-                </p>
-                <div class="skill-tags">
-                    <span class="tag">TensorFlow</span>
-                    <span class="tag">PyTorch</span>
-                    <span class="tag">Scikit-learn</span>
-                    <span class="tag">Raspberry Pi</span>
-                </div>
+    </div>
+</section>
+
+<!-- ═══ WHAT I BRING TO THE TABLE ═══ -->
+<div class="category" id="skills" style="margin-top:-2rem; margin-bottom:3.5rem;">
+    <div class="category-title">🎯 What I Bring to the Table</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:0.5rem;">
+        <div style="background:var(--bg-card);border:1px solid #2a2a2a;border-radius:var(--radius);padding:1.5rem;transition:all 0.3s;border-left:3px solid var(--red);" onmouseenter="this.style.borderColor='var(--red)';this.style.transform='translateY(-3px)'" onmouseleave="this.style.borderColor='#2a2a2a';this.style.transform='none';this.style.borderLeftColor='var(--red)'">
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.8rem;"><span style="font-size:1.2rem;">🧠</span><strong style="font-size:0.95rem;">AI / Machine Learning</strong></div>
+            <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.8rem;">Building production ML pipelines — from data preprocessing to model deployment on edge devices and cloud GPUs.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:0.3rem;">
+                <span class="card-tag">PyTorch</span><span class="card-tag">TensorFlow</span><span class="card-tag">Scikit-learn</span><span class="card-tag">NLP</span><span class="card-tag">CNNs</span><span class="card-tag">Anomaly Detection</span><span class="card-tag">Edge ML</span><span class="card-tag">Modal</span>
             </div>
         </div>
-    </section>
-    
-    <!-- Experience Section -->
-    <section id="experience">
-        <div class="section-header fade-in">
-            <div class="section-label">My Journey</div>
-            <h2 class="section-title">Experience</h2>
-        </div>
-        
-        <div class="timeline">
-            <div class="timeline-item fade-in">
-                <div class="company">The George Washington University</div>
-                <h3>Research Intern (AI/ML/Raspberry Pi) & Research Assistant</h3>
-                <div class="period">Feb 2025 - Present · 1 mo | Washington D.C.</div>
-                <ul>
-                    <li>Working under Prof. Eric Dano to develop Python-based NLP, AI, and ML applications for a Raspberry Pi-based sensor system as part of undergraduate Model-Based Systems Engineering (MBSE) course</li>
-                    <li>Developed multiple Raspberry Pi applications using Python, MQTT, and ML models, including real-time anomaly detection system with Streamlit dashboard, improved data efficiency by 45% and reduced false positives by 30%</li>
-                    <li>Assisting Prof. Dano for Spring 2026 Systems Engineering course, including hands-on Raspberry Pi applications and detailed capability data sheets to enhance student learning and engagement</li>
-                    <li>Collaborating with Prof. Alexa Joubin to lead migration of academic and open-education websites (joubin.org, Screening Shakespeare, Critical Theory) to WordPress (GW Blogs)</li>
-                    <li>Designing and testing UI/UX templates and multiple layout options to improve site accessibility, scalability, and user experience</li>
-                </ul>
-            </div>
-            
-            <div class="timeline-item fade-in">
-                <div class="company">Stealth Startups - GoScale, FriendSquare, Alternative Structure Group</div>
-                <h3>Software Engineer (Full-Stack)</h3>
-                <div class="period">Aug 2022 - May 2024 · 1 yr 10 mos | Remote</div>
-                <ul>
-                    <li>Designed impactful landing pages and implemented robust database for fintech startup, optimizing user experience and data management. Spearheaded technical roadmap development and provided strategic recommendations on technology stacks, tools, and techniques</li>
-                    <li>Created and managed impactful website enhancements for FriendSquare, a New Delhi-based psychology firm, including new features and landing pages. Established and maintained database to enhance technical functionality and user experience</li>
-                    <li>Crafted adaptive landing pages and database solutions for GoScale's client. Developed and managed database for student-centric website featuring diverse resources for latest technological developments through online courses and tutorials</li>
-                    <li>Used PHP for backend programming, HTML, CSS, and JavaScript for frontend development, and CodeIgniter framework for backend development</li>
-                    <li>Contributed to startup's technical roadmap development, providing recommendations on technology stacks to support company growth and mission</li>
-                    <li>Maintained up-to-date knowledge of industry trends and emerging technologies, applying knowledge to improve efficiency and effectiveness of software development processes</li>
-                </ul>
-            </div>
-            
-            <div class="timeline-item fade-in">
-                <div class="company">Cognizant Technology Solutions</div>
-                <h3>Programming Analyst</h3>
-                <div class="period">Jun 2021 - Jul 2022 · 1 yr 2 mos | Pune, India</div>
-                <ul>
-                    <li>Improved client satisfaction by developing customized development plan meeting specific requirements, resulting in 95% client retention rate</li>
-                    <li>Completed projects on time and within budget by implementing strict project management methodology, resulting in 100% on-time delivery rate and 20% reduction in project costs</li>
-                    <li>Developed efficient and scalable code improving system performance and reducing errors by 25%</li>
-                    <li>Successfully packaged and deployed over 100 applications using PowerShell scripting, SCCM deployment, SCCM driver packaging, and Intune packaging, resulting in 99% success rate</li>
-                    <li>Reduced application installation time by 50% by implementing silent installation using VB-Scripts and batch scripting</li>
-                    <li>Managed and maintained large databases with over 10,000 records, resulting in 99.99% uptime and 100% data integrity</li>
-                </ul>
-            </div>
-            
-            <div class="timeline-item fade-in">
-                <div class="company">Root Kings</div>
-                <h3>Web Developer</h3>
-                <div class="period">Nov 2020 - May 2021 · 7 mos | Nagpur, Maharashtra, India (Remote)</div>
-                <ul>
-                    <li>Developed Superrfan-App, a celebrity game-based social media platform, using Vue.js, JavaScript, and HTML</li>
-                    <li>Built application functionality allowing users to create teams and rate selected team members</li>
-                    <li>Implemented reward and monetary system based on user ratings and team performance</li>
-                    <li>Successfully launched Superrfan-App, resulting in significant increase in user engagement and platform traffic</li>
-                    <li>Continuously maintained and improved application, ensuring smooth operation and user satisfaction</li>
-                    <li>Collaborated with team of designers and developers to create seamless user experience and visually appealing interface</li>
-                    <li>Demonstrated exceptional problem-solving skills in resolving technical issues and bugs</li>
-                    <li>Effectively communicated with stakeholders and team members to gather requirements and provide updates on project progress</li>
-                </ul>
-            </div>
-            
-            <div class="timeline-item fade-in">
-                <div class="company">Talent Anywhere</div>
-                <h3>Software Engineer (PHP)</h3>
-                <div class="period">Aug 2020 - Nov 2020 · 4 mos | Pune, Maharashtra, India</div>
-                <ul>
-                    <li>Successfully developed high-performance platforms called Gujarati Sahitya Forum and NS4ED using PHP, CodeIgniter framework, HTML, CSS, and JavaScript</li>
-                    <li>Implemented features such as user authentication, user management, and content management systems to enhance platform functionality and usability</li>
-                    <li>Optimized website performance, resulting in faster load times and improved user experience</li>
-                    <li>Collaborated with team members to ensure successful completion of project milestones within set deadlines</li>
-                    <li>Conducted thorough testing and debugging to ensure platform was bug-free and ready for deployment</li>
-                    <li>Demonstrated proficiency in programming languages and frameworks, leading to increased efficiency and productivity</li>
-                    <li>Contributed to development of best practices and coding standards, resulting in streamlined development process</li>
-                    <li>Received positive feedback from users on platform's design, functionality, and user experience</li>
-                </ul>
-            </div>
-            
-            <div class="timeline-item fade-in">
-                <div class="company">Maxgen Technologies</div>
-                <h3>Junior Java Developer</h3>
-                <div class="period">Jan 2020 - Jun 2020 · 6 mos | Pune, Maharashtra, India</div>
-                <ul>
-                    <li>Designed and developed dynamic and responsive web pages using Java, HTML, CSS, and JavaScript</li>
-                    <li>Reviewed code and debugged errors to ensure software applications were of high quality and error-free</li>
-                    <li>Collaborated with cross-functional teams to ensure seamless integration of front-end and back-end systems</li>
-                    <li>Implemented new features and functionalities to improve website's user experience</li>
-                    <li>Demonstrated ability to work under tight deadlines and deliver high-quality results on time</li>
-                    <li>Served as dedicated and supportive intern in fast-paced environment</li>
-                </ul>
-            </div>
-            
-            <div class="timeline-item fade-in">
-                <div class="company">CDAC - Centre for Development of Advanced Computing</div>
-                <h3>PHP Trainee</h3>
-                <div class="period">May 2018 - Jun 2018 · 2 mos | Chandigarh, India</div>
-                <ul>
-                    <li>Garnered hands-on experience in PHP, JavaScript, HTML, and CSS programming languages</li>
-                    <li>Analyzed and designed new systems and applications</li>
-                    <li>Brought forth passion and dedication to software development</li>
-                </ul>
+        <div style="background:var(--bg-card);border:1px solid #2a2a2a;border-radius:var(--radius);padding:1.5rem;transition:all 0.3s;border-left:3px solid #3498db;" onmouseenter="this.style.borderColor='#3498db';this.style.transform='translateY(-3px)'" onmouseleave="this.style.borderColor='#2a2a2a';this.style.transform='none';this.style.borderLeftColor='#3498db'">
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.8rem;"><span style="font-size:1.2rem;">⚡</span><strong style="font-size:0.95rem;">Full-Stack Development</strong></div>
+            <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.8rem;">End-to-end web applications — responsive frontends, RESTful APIs, and robust backend architectures.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:0.3rem;">
+                <span class="card-tag">React</span><span class="card-tag">Vue.js</span><span class="card-tag">Node.js</span><span class="card-tag">JavaScript</span><span class="card-tag">HTML/CSS</span><span class="card-tag">Tailwind</span><span class="card-tag">PHP</span><span class="card-tag">CodeIgniter</span><span class="card-tag">REST APIs</span>
             </div>
         </div>
-    </section>
-    
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="section-header fade-in">
-            <div class="section-label">What I've Built</div>
-            <h2 class="section-title">Featured Projects</h2>
-        </div>
-        
-        <div class="projects-grid">
-            <div class="project-card fade-in">
-                <div class="project-content">
-                    <h3>EchoSense: Environmental Sound Classification</h3>
-                    <p>End-to-end deep learning pipeline for environmental sound classification with ResNet-based CNN architecture. Includes automated mel-spectrogram generation, intermediate layer visualization, TensorBoard integration, and real-time prediction interface. Trained on Modal cloud GPU (A10G).</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">PyTorch</span>
-                        <span class="tech-tag">Modal</span>
-                        <span class="tech-tag">ResNet</span>
-                        <span class="tech-tag">TensorBoard</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/AnkitaPimpalkar08/EchoSense-main" target="_blank" title="View on GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card fade-in">
-                <div class="project-content">
-                    <h3>Real-Time Anomaly Detection System</h3>
-                    <p>Built streaming data pipeline using Python and MQTT processing 200,000+ IoT sensor observations. Implemented Isolation Forest with 10-sample rolling window for edge deployment. Developed Streamlit dashboard for live monitoring with 45% compute overhead reduction on Raspberry Pi 4 (1GB RAM).</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">MQTT</span>
-                        <span class="tech-tag">Streamlit</span>
-                        <span class="tech-tag">Isolation Forest</span>
-                        <span class="tech-tag">Raspberry Pi</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/AnkitaPimpalkar08/AnomalyDetection_RaspberryPi" target="_blank" title="View on GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card fade-in">
-                <div class="project-content">
-                    <h3>GreenShoes E-Commerce Platform</h3>
-                    <p>Full-stack e-commerce website with product catalog, advanced filtering, shopping cart, and user authentication. Designed PostgreSQL database schema for order management and inventory tracking. Built responsive frontend using React and Tailwind CSS with REST APIs for seamless user experience.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Vite</span>
-                        <span class="tech-tag">Tailwind CSS</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/AnkitaPimpalkar08/greenshoes-eco-shoe-store-frontend" target="_blank" title="View on GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card fade-in">
-                <div class="project-content">
-                    <h3>Soil Sensor Application</h3>
-                    <p>Raspberry Pi-based IoT application for real-time soil monitoring using environmental sensors. Implemented data collection, processing, and visualization for agricultural automation and smart farming applications.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Raspberry Pi</span>
-                        <span class="tech-tag">IoT</span>
-                        <span class="tech-tag">Sensors</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/AnkitaPimpalkar08/Soil-sensor-application" target="_blank" title="View on GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card fade-in">
-                <div class="project-content">
-                    <h3>Social Media and Mental Health Analysis</h3>
-                    <p>Data science project analyzing the relationship between social media usage patterns and mental health indicators. Implemented statistical analysis, data visualization, and machine learning models to identify correlations and trends.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Pandas</span>
-                        <span class="tech-tag">Scikit-learn</span>
-                        <span class="tech-tag">Matplotlib</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/AnkitaPimpalkar08/SocialMediaAndMentalHealthAnalysis" target="_blank" title="View on GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card fade-in">
-                <div class="project-content">
-                    <h3>Handwritten Character Recognition</h3>
-                    <p>CNN-based expert system for handwritten character recognition using Artificial Neural Networks. Achieved 96% test accuracy on MNIST dataset with comprehensive calibration analysis. Implemented confidence distribution analysis and error pattern visualization.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">TensorFlow</span>
-                        <span class="tech-tag">CNN</span>
-                        <span class="tech-tag">OpenCV</span>
-                        <span class="tech-tag">Python</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/AnkitaPimpalkar08/HandwrittenCharacterRecognition" target="_blank" title="View on GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card fade-in">
-                <div class="project-content">
-                    <h3>AI Personal Voice Assistant</h3>
-                    <p>Voice-activated personal assistant helping less tech-savvy users interact with computers. Implements note-taking, music playback from YouTube Music, weather information fetching, and basic calculations. Works similarly to Siri/Google Assistant for desktop use.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">NLP</span>
-                        <span class="tech-tag">Voice Recognition</span>
-                        <span class="tech-tag">APIs</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/AnkitaPimpalkar08/Personal_assistant" target="_blank" title="View on GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card fade-in">
-                <div class="project-content">
-                    <h3>Superrfan-App</h3>
-                    <p>Celebrity game-based social media platform where users create teams, rate team members, and earn rewards based on performance. Built with Vue.js for seamless user experience and implemented comprehensive reward and monetary systems.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Vue.js</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">HTML/CSS</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card fade-in">
-                <div class="project-content">
-                    <h3>NS4ED Educational Platform</h3>
-                    <p>Stand-alone application providing quality leadership, research, and guidance to identify and promote best practices in teaching and learning. Developed using PHP and CodeIgniter framework with comprehensive CMS features.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">PHP</span>
-                        <span class="tech-tag">CodeIgniter</span>
-                        <span class="tech-tag">MySQL</span>
-                        <span class="tech-tag">JavaScript</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card fade-in">
-                <div class="project-content">
-                    <h3>Gujarati Sahitya Forum</h3>
-                    <p>Global platform connecting Gujarati people worldwide to their cultural roots. Features local chapter management, event organization, and community building. Each chapter serves as a node in a global network keeping Gujarati culture alive internationally.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">PHP</span>
-                        <span class="tech-tag">CodeIgniter</span>
-                        <span class="tech-tag">HTML/CSS</span>
-                        <span class="tech-tag">JavaScript</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card fade-in">
-                <div class="project-content">
-                    <h3>Humbleshit-App</h3>
-                    <p>Task management application designed for organizations handling cleaning and maintenance operations. Enables efficient tracking of washroom maintenance tasks with real-time updates and assignment management.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Vue.js</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">CSS</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card fade-in">
-                <div class="project-content">
-                    <h3>E-Commerce Platform with Payment Integration</h3>
-                    <p>Business model e-commerce website selling consumer goods and digital media. Implemented PayU Money payment integration, shopping cart, wishlist, recently viewed items, order tracking, and cancellation functionality using Java, Hibernate, JSP, and Servlets.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Java</span>
-                        <span class="tech-tag">Hibernate</span>
-                        <span class="tech-tag">JSP</span>
-                        <span class="tech-tag">Servlets</span>
-                    </div>
-                </div>
+        <div style="background:var(--bg-card);border:1px solid #2a2a2a;border-radius:var(--radius);padding:1.5rem;transition:all 0.3s;border-left:3px solid var(--green);" onmouseenter="this.style.borderColor='var(--green)';this.style.transform='translateY(-3px)'" onmouseleave="this.style.borderColor='#2a2a2a';this.style.transform='none';this.style.borderLeftColor='var(--green)'">
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.8rem;"><span style="font-size:1.2rem;">📊</span><strong style="font-size:0.95rem;">Data Engineering & Analysis</strong></div>
+            <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.8rem;">ETL pipelines, streaming data systems, database design, and statistical analysis at scale.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:0.3rem;">
+                <span class="card-tag">Python</span><span class="card-tag">SQL</span><span class="card-tag">PostgreSQL</span><span class="card-tag">MySQL</span><span class="card-tag">Pandas</span><span class="card-tag">MQTT</span><span class="card-tag">Streamlit</span><span class="card-tag">ETL</span><span class="card-tag">Data Visualization</span>
             </div>
         </div>
-    </section>
-    
-    <!-- Certifications Section -->
-    <section id="certifications">
-        <div class="section-header fade-in">
-            <div class="section-label">Credentials</div>
-            <h2 class="section-title">Licenses & Certifications</h2>
-        </div>
-        
-        <div class="skills-grid">
-            <div class="skill-card fade-in">
-                <div class="icon"><i class="fab fa-redhat"></i></div>
-                <h3>Red Hat System Administration I (RH124 - RHA)</h3>
-                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Red Hat · Ver. 9.3</p>
-                <p style="color: var(--text-muted); font-size: 0.9rem;">Issued Apr 2025</p>
-            </div>
-            
-            <div class="skill-card fade-in">
-                <div class="icon"><i class="fab fa-aws"></i></div>
-                <h3>AWS Academy Graduate - AWS Academy Cloud Operations</h3>
-                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Amazon Web Services (AWS)</p>
-                <p style="color: var(--text-muted); font-size: 0.9rem;">Issued Apr 2025</p>
-            </div>
-            
-            <div class="skill-card fade-in">
-                <div class="icon"><i class="fab fa-aws"></i></div>
-                <h3>AWS Academy Graduate - AWS Academy Cloud Foundations</h3>
-                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Amazon Web Services (AWS)</p>
-                <p style="color: var(--text-muted); font-size: 0.9rem;">Issued Feb 2025</p>
-                <div class="skill-tags" style="margin-top: 1rem;">
-                    <span class="tag">AWS Architecture</span>
-                    <span class="tag">AWS Cloud</span>
-                </div>
-            </div>
-            
-            <div class="skill-card fade-in">
-                <div class="icon"><i class="fas fa-code"></i></div>
-                <h3>Java Programming</h3>
-                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Udemy</p>
-                <div class="skill-tags" style="margin-top: 1rem;">
-                    <span class="tag">Java</span>
-                </div>
-            </div>
-            
-            <div class="skill-card fade-in">
-                <div class="icon"><i class="fab fa-linkedin"></i></div>
-                <h3>Learning C</h3>
-                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">LinkedIn Learning</p>
-            </div>
-            
-            <div class="skill-card fade-in">
-                <div class="icon"><i class="fab fa-python"></i></div>
-                <h3>Python Programming</h3>
-                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Udemy</p>
-                <div class="skill-tags" style="margin-top: 1rem;">
-                    <span class="tag">Python</span>
-                </div>
-            </div>
-            
-            <div class="skill-card fade-in">
-                <div class="icon"><i class="fas fa-chart-line"></i></div>
-                <h3>Programming Using Python</h3>
-                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">DataCamp</p>
-            </div>
-            
-            <div class="skill-card fade-in">
-                <div class="icon"><i class="fab fa-java"></i></div>
-                <h3>Object Oriented Programming in Java</h3>
-                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Coursera</p>
-                <div class="skill-tags" style="margin-top: 1rem;">
-                    <span class="tag">Java</span>
-                    <span class="tag">OOP</span>
-                </div>
-            </div>
-            
-            <div class="skill-card fade-in">
-                <div class="icon"><i class="fas fa-database"></i></div>
-                <h3>SQL Fundamentals</h3>
-                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">DataCamp</p>
-                <div class="skill-tags" style="margin-top: 1rem;">
-                    <span class="tag">SQL</span>
-                </div>
-            </div>
-            
-            <div class="skill-card fade-in">
-                <div class="icon"><i class="fas fa-sync-alt"></i></div>
-                <h3>Introduction to Iterative Programming in Python</h3>
-                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Coursera</p>
-                <div class="skill-tags" style="margin-top: 1rem;">
-                    <span class="tag">Python</span>
-                </div>
+        <div style="background:var(--bg-card);border:1px solid #2a2a2a;border-radius:var(--radius);padding:1.5rem;transition:all 0.3s;border-left:3px solid var(--gold);" onmouseenter="this.style.borderColor='var(--gold)';this.style.transform='translateY(-3px)'" onmouseleave="this.style.borderColor='#2a2a2a';this.style.transform='none';this.style.borderLeftColor='var(--gold)'">
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.8rem;"><span style="font-size:1.2rem;">☁️</span><strong style="font-size:0.95rem;">DevOps, Cloud & IoT</strong></div>
+            <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.8rem;">Cloud deployment, containerization, IoT sensor systems, and edge computing on resource-constrained devices.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:0.3rem;">
+                <span class="card-tag">AWS</span><span class="card-tag">Docker</span><span class="card-tag">Raspberry Pi</span><span class="card-tag">Linux</span><span class="card-tag">Red Hat</span><span class="card-tag">SCCM</span><span class="card-tag">PowerShell</span><span class="card-tag">Git</span>
             </div>
         </div>
-    </section>
-    
-    <!-- Testimonials Section -->
-    <section id="testimonials">
-        <div class="section-header fade-in">
-            <div class="section-label">Kind Words</div>
-            <h2 class="section-title">Testimonials</h2>
-        </div>
-        
-        <div class="testimonials-grid">
-            <div class="testimonial fade-in">
-                <p>"Throughout her time at Cognizant, Ankita's ability to handle complex technical challenges, coupled with her relentless commitment to producing high-quality work, set her apart as an outstanding professional. What truly distinguishes Ankita is not only her technical acumen but also her exceptional interpersonal and communication skills. Her contributions extended beyond the scope of her role, reflecting a deep commitment to the success of our collective objectives. Working with Ankita has been one of the most enriching and rewarding teamwork experiences I've had and I would, without hesitation, welcome her on any team I am part of."</p>
-                <div class="testimonial-author">Akash Bhandari</div>
-                <div class="testimonial-role">Senior Manager, Cognizant Technology Solutions</div>
+    </div>
+</div>
+
+<!-- ═══ TOP 10 SKILLS ═══ -->
+<div class="category">
+    <div class="category-title">🔟 Top 10 Skills in D.C. Today <span class="explore">Explore All ›</span></div>
+    <div class="top10-row">
+        <div class="top10-item"><div class="top10-number">1</div><div class="top10-card card-fs"><div class="card-bg">PYTHON</div><div class="top10-info"><h4>Python</h4><p>AI/ML · Backend · Data</p></div></div></div>
+        <div class="top10-item"><div class="top10-number">2</div><div class="top10-card card-web"><div class="card-bg">REACT</div><div class="top10-info"><h4>React</h4><p>Frontend · Full-Stack</p></div></div></div>
+        <div class="top10-item"><div class="top10-number">3</div><div class="top10-card card-data"><div class="card-bg">SQL</div><div class="top10-info"><h4>SQL</h4><p>Data · Backend</p></div></div></div>
+        <div class="top10-item"><div class="top10-number">4</div><div class="top10-card card-ml"><div class="card-bg">PYTORCH</div><div class="top10-info"><h4>PyTorch</h4><p>Deep Learning · ML</p></div></div></div>
+        <div class="top10-item"><div class="top10-number">5</div><div class="top10-card card-fs"><div class="card-bg">NODE.JS</div><div class="top10-info"><h4>Node.js</h4><p>Backend · APIs</p></div></div></div>
+        <div class="top10-item"><div class="top10-number">6</div><div class="top10-card card-ai"><div class="card-bg">TENSORFLOW</div><div class="top10-info"><h4>TensorFlow</h4><p>ML · Neural Networks</p></div></div></div>
+        <div class="top10-item"><div class="top10-number">7</div><div class="top10-card card-web"><div class="card-bg">JAVASCRIPT</div><div class="top10-info"><h4>JavaScript</h4><p>Frontend · Full-Stack</p></div></div></div>
+        <div class="top10-item"><div class="top10-number">8</div><div class="top10-card card-data"><div class="card-bg">POSTGRESQL</div><div class="top10-info"><h4>PostgreSQL</h4><p>Database · Data Eng</p></div></div></div>
+        <div class="top10-item"><div class="top10-number">9</div><div class="top10-card card-cert"><div class="card-bg">AWS</div><div class="top10-info"><h4>AWS</h4><p>Cloud · DevOps</p></div></div></div>
+        <div class="top10-item"><div class="top10-number">10</div><div class="top10-card card-iot"><div class="card-bg">RASPBERRY PI</div><div class="top10-info"><h4>Raspberry Pi</h4><p>IoT · Edge Deploy</p></div></div></div>
+    </div>
+</div>
+
+<!-- ═══ TRENDING IN ML / AI ═══ -->
+<div class="category" id="projects-ml">
+    <div class="category-title">🔥 Trending in AI / Machine Learning <span class="explore">Explore All ›</span></div>
+    <div class="carousel">
+        <div class="card" onclick="openModal('echosense')">
+            <div class="card-bg card-ml">ECHOSENSE<br><span style="font-size:0.65rem;opacity:0.7;letter-spacing:0;">Sound Classification · Deep Learning</span></div>
+            <div class="card-overlay">
+                <div class="card-title">EchoSense — Environmental Sound Classification</div>
+                <div class="card-meta"><span class="match-sm">96% Accuracy</span> · ResNet CNN · Cloud GPU</div>
+                <div class="card-tags"><span class="card-tag">PyTorch</span><span class="card-tag">ResNet</span><span class="card-tag">Modal A10G</span><span class="card-tag">TensorBoard</span></div>
             </div>
-            
-            <div class="testimonial fade-in">
-                <p>"I had the pleasure of working with Ankita on multiple projects, and she has consistently impressed me with her dedication and skills. She takes complete ownership of her tasks, ensuring high-quality deliverables every time. Her ability to stay focused, take a stand when needed, and adapt to new challenges is truly commendable. What sets her apart is her eagerness to learn and willingness to step beyond conventional tasks, always bringing creative solutions to the table. Beyond her technical excellence, she makes the work environment lively and engaging, making even the toughest tasks enjoyable. She is a fantastic colleague to have, and I highly recommend her!"</p>
-                <div class="testimonial-author">Yash Kurzekar</div>
-                <div class="testimonial-role">Colleague, Cognizant Technology Solutions</div>
-            </div>
-            
-            <div class="testimonial fade-in">
-                <p>"Ankita and I worked together in Cognizant, and I was lucky to call her my coworker. She consistently gave 100 percent effort to the team and played a significant role in ensuring that we completed assignments on time. She had excellent time management skills and had a knack for keeping everyone calm and productive during intense crunch periods. Any team would be lucky to have her, and I couldn't recommend her more for any business looking for new talent."</p>
-                <div class="testimonial-author">Shubham Gurjar</div>
-                <div class="testimonial-role">Colleague, Cognizant Technology Solutions</div>
-            </div>
-            
-            <div class="testimonial fade-in">
-                <p>"It is my pleasure to write this recommendation for my colleague Ankita, whom I have had the pleasure of working alongside at Cognizant. Ankita is a highly skilled and dedicated professional who always goes above and beyond in everything she does. She is an excellent communicator and has a talent for bringing people together to work towards a common goal. What sets Ankita apart is her ability to think strategically and find innovative solutions to complex problems. She is a natural leader who inspires those around her to work harder and smarter to achieve their goals. Throughout our time working together, she has consistently shown her exceptional work ethic and leadership qualities. She is a true team player who is always willing to lend a helping hand to colleagues and goes the extra mile to ensure the success of our team's projects. I have no doubt that Ankita will make a valuable contribution to any organization she works with, and I wholeheartedly recommend her for any future opportunities."</p>
-                <div class="testimonial-author">Samiksha Chintawar</div>
-                <div class="testimonial-role">Colleague, Cognizant Technology Solutions</div>
-            </div>
-            
-            <div class="testimonial fade-in">
-                <p>"I am thrilled to write this recommendation for my former classmate, Ankita whom I had the pleasure of working with on several group projects during our time at Chandigarh University. Ankita was an outstanding team member who consistently demonstrated exceptional teamwork, communication, and leadership skills. She was able to effectively manage multiple responsibilities and ensured that all team members were working together cohesively towards a common goal. What impressed me most about Ankita was her ability to think creatively and find innovative solutions to complex problems. She was always willing to go above and beyond to ensure that our team's projects were delivered to the highest standards. Throughout our time working together, she showed a great deal of enthusiasm, professionalism, and dedication to our team's success. She was always willing to listen to other team members' ideas and provide valuable feedback."</p>
-                <div class="testimonial-author">Raju Mondal</div>
-                <div class="testimonial-role">Classmate, Chandigarh University</div>
-            </div>
-            
-            <div class="testimonial fade-in">
-                <p>"Firstly, I would particularly mention that it brings me immense pleasure to recommend Ankita, a brilliant learner, supportive colleague and a hardworking lady. I have had this privilege to work with her during her initial phase of working with Cognizant. She was one of the most curious and quick learners I have ever came across. Not just that but she was among those rare hardworking Gems who just deny to give up and try to best of their efforts in every single task they perform. It is a proud feeling to see her outstanding journey since that time. Also, the exceptionally increasing graph of her new skills and achievements are truly remarkable. I think Ankita is an individual who will just never fail to add more value to the work she will do with her smart ways. More power to her and yes long way to go. All the best !!"</p>
-                <div class="testimonial-author">Shruti Nimbarmunde</div>
-                <div class="testimonial-role">Colleague, Cognizant Technology Solutions</div>
-            </div>
-            
-            <div class="testimonial fade-in">
-                <p>"It is with great enthusiasm that I recommend Ankita for a position in Web Application Development. She is highly skilled and always eager to explore and experiment. Her diligence and keen eye for details is an asset for every team that Ankita is a part of."</p>
-                <div class="testimonial-author">Krushn Dayshmookh</div>
-                <div class="testimonial-role">Professional Colleague</div>
-            </div>
-            
-            <div class="testimonial fade-in">
-                <p>"I highly recommend Ankita for a role in the technology. She has a passion for innovation and experimentation, and has a proven track record of effectively utilizing her critical thinking and decision-making skills in her work. Her strong work ethic and ability to collaborate with others make her well-suited for a role that requires teamwork and problem-solving. I believe her creative talents will prove to be a valuable resource for any organization."</p>
-                <div class="testimonial-author">Sakshi Rajput</div>
-                <div class="testimonial-role">Professional Colleague</div>
+            <div class="card-actions">
+                <a href="https://github.com/AnkitaPimpalkar08/EchoSense-main" target="_blank" class="card-btn" onclick="event.stopPropagation()"><i class="fab fa-github"></i></a>
             </div>
         </div>
-    </section>
-    
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="section-header fade-in">
-            <div class="section-label">Let's Connect</div>
-            <h2 class="section-title">Get In Touch</h2>
-            <p class="section-subtitle">
-                I'm actively seeking full-time software engineering opportunities (Backend, Frontend, Full-Stack, AI/ML) starting May 2026. Let's discuss how I can contribute to your team!
-            </p>
-        </div>
-        
-        <div class="contact-container">
-            <div class="contact-grid">
-                <div class="contact-item fade-in">
-                    <i class="fas fa-envelope"></i>
-                    <h3>Email</h3>
-                    <a href="mailto:apimpalkar707@gmail.com">apimpalkar707@gmail.com</a>
-                </div>
-                
-                <div class="contact-item fade-in">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>Location</h3>
-                    <p>Washington D.C., USA</p>
-                </div>
-                
-                <div class="contact-item fade-in">
-                    <i class="fab fa-linkedin"></i>
-                    <h3>LinkedIn</h3>
-                    <a href="https://www.linkedin.com/in/ankita-pimpalkar-7510a9174/" target="_blank">Connect with me</a>
-                </div>
+        <div class="card" onclick="openModal('anomaly')">
+            <div class="card-bg card-iot">ANOMALY DETECTOR<br><span style="font-size:0.65rem;opacity:0.7;letter-spacing:0;">Real-Time IoT · Edge ML</span></div>
+            <div class="card-overlay">
+                <div class="card-title">Real-Time Anomaly Detection — IoT Sensor Pipeline</div>
+                <div class="card-meta"><span class="match-sm">200K+ Data Points</span> · Raspberry Pi Edge</div>
+                <div class="card-tags"><span class="card-tag">Python</span><span class="card-tag">MQTT</span><span class="card-tag">Isolation Forest</span><span class="card-tag">Streamlit</span></div>
             </div>
-            
-            <div class="cta-buttons" style="justify-content: center; margin-top: 3rem;">
-                <a href="mailto:apimpalkar707@gmail.com" class="btn btn-primary">
-                    <i class="fas fa-paper-plane"></i> Send Message
-                </a>
-                <a href="AnkitaVilasPimpalkar_Resume.pdf" download class="btn btn-secondary">
-                    <i class="fas fa-download"></i> Download Resume
-                </a>
+            <div class="card-actions">
+                <a href="https://github.com/AnkitaPimpalkar08/AnomalyDetection_RaspberryPi" target="_blank" class="card-btn" onclick="event.stopPropagation()"><i class="fab fa-github"></i></a>
             </div>
         </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Ankita Vilas Pimpalkar. Crafted with passion and precision.</p>
-    </footer>
-    
-    <script>
-        // Mobile Menu Toggle
-        function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
-        }
-        
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    // Close mobile menu
-                    document.getElementById('navLinks').classList.remove('active');
-                }
-            });
-        });
-        
-        // Scroll Animation Observer
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-        
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-        
-        // Active Nav Link on Scroll
-        window.addEventListener('scroll', () => {
-            let current = '';
-            const sections = document.querySelectorAll('section');
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= (sectionTop - 150)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
+        <div class="card" onclick="openModal('handwriting')">
+            <div class="card-bg card-ai">OCR ENGINE<br><span style="font-size:0.65rem;opacity:0.7;letter-spacing:0;">Handwritten Character · CNN</span></div>
+            <div class="card-overlay">
+                <div class="card-title">Handwritten Character Recognition — CNN Expert System</div>
+                <div class="card-meta"><span class="match-sm">96% MNIST Accuracy</span> · Neural Networks</div>
+                <div class="card-tags"><span class="card-tag">TensorFlow</span><span class="card-tag">CNN</span><span class="card-tag">OpenCV</span></div>
+            </div>
+            <div class="card-actions">
+                <a href="https://github.com/AnkitaPimpalkar08/HandwrittenCharacterRecognition" target="_blank" class="card-btn" onclick="event.stopPropagation()"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+        <div class="card" onclick="openModal('voice')">
+            <div class="card-bg card-ml">VOICE ASSISTANT<br><span style="font-size:0.65rem;opacity:0.7;letter-spacing:0;">NLP · Desktop Automation</span></div>
+            <div class="card-overlay">
+                <div class="card-title">AI Personal Voice Assistant — Desktop NLP Agent</div>
+                <div class="card-meta"><span class="match-sm">Voice-Activated</span> · Notes · Music · Weather</div>
+                <div class="card-tags"><span class="card-tag">Python</span><span class="card-tag">NLP</span><span class="card-tag">Speech Recognition</span></div>
+            </div>
+            <div class="card-actions">
+                <a href="https://github.com/AnkitaPimpalkar08/Personal_assistant" target="_blank" class="card-btn" onclick="event.stopPropagation()"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+        <div class="card" onclick="openModal('mentalhealth')">
+            <div class="card-bg card-data">DATA INSIGHTS<br><span style="font-size:0.65rem;opacity:0.7;letter-spacing:0;">Social Media · Mental Health</span></div>
+            <div class="card-overlay">
+                <div class="card-title">Social Media & Mental Health — Data Science Analysis</div>
+                <div class="card-meta"><span class="match-sm">ML Models</span> · Statistical Analysis</div>
+                <div class="card-tags"><span class="card-tag">Pandas</span><span class="card-tag">Scikit-learn</span><span class="card-tag">Matplotlib</span></div>
+            </div>
+            <div class="card-actions">
+                <a href="https://github.com/AnkitaPimpalkar08/SocialMediaAndMentalHealthAnalysis" target="_blank" class="card-btn" onclick="event.stopPropagation()"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ FULL STACK ORIGINALS ═══ -->
+<div class="category" id="projects-fs">
+    <div class="category-title">💻 Full Stack Originals <span class="explore">Explore All ›</span></div>
+    <div class="carousel">
+        <div class="card" onclick="openModal('greenshoes')">
+            <div class="card-bg card-fs">GREENSHOES<br><span style="font-size:0.65rem;opacity:0.7;letter-spacing:0;">E-Commerce · Full Stack</span></div>
+            <div class="card-overlay">
+                <div class="card-title">GreenShoes — Full-Stack E-Commerce Platform</div>
+                <div class="card-meta"><span class="match-sm">React + Node.js</span> · PostgreSQL</div>
+                <div class="card-tags"><span class="card-tag">React</span><span class="card-tag">Tailwind</span><span class="card-tag">Node.js</span><span class="card-tag">REST APIs</span></div>
+            </div>
+            <div class="card-actions">
+                <a href="https://github.com/AnkitaPimpalkar08/greenshoes-eco-shoe-store-frontend" target="_blank" class="card-btn" onclick="event.stopPropagation()"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+        <div class="card" onclick="openModal('superrfan')">
+            <div class="card-bg card-web">SUPERRFAN<br><span style="font-size:0.65rem;opacity:0.7;letter-spacing:0;">Social Gaming · Vue.js</span></div>
+            <div class="card-overlay">
+                <div class="card-title">Superrfan — Celebrity Gaming Social Platform</div>
+                <div class="card-meta"><span class="match-sm">Vue.js</span> · Gamification · Rewards</div>
+                <div class="card-tags"><span class="card-tag">Vue.js</span><span class="card-tag">JavaScript</span><span class="card-tag">HTML/CSS</span></div>
+            </div>
+        </div>
+        <div class="card" onclick="openModal('soil')">
+            <div class="card-bg card-iot">SOIL MONITOR<br><span style="font-size:0.65rem;opacity:0.7;letter-spacing:0;">IoT · Smart Agriculture</span></div>
+            <div class="card-overlay">
+                <div class="card-title">Soil Sensor — IoT Agricultural Monitoring System</div>
+                <div class="card-meta"><span class="match-sm">Raspberry Pi</span> · Real-Time Sensors</div>
+                <div class="card-tags"><span class="card-tag">Python</span><span class="card-tag">Raspberry Pi</span><span class="card-tag">IoT</span></div>
+            </div>
+            <div class="card-actions">
+                <a href="https://github.com/AnkitaPimpalkar08/Soil-sensor-application" target="_blank" class="card-btn" onclick="event.stopPropagation()"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+        <div class="card" onclick="openModal('ecommerce')">
+            <div class="card-bg card-exp">JAVA STORE<br><span style="font-size:0.65rem;opacity:0.7;letter-spacing:0;">E-Commerce · PayU Gateway</span></div>
+            <div class="card-overlay">
+                <div class="card-title">E-Commerce Platform — Java + PayU Payment Integration</div>
+                <div class="card-meta"><span class="match-sm">Hibernate + JSP</span> · Order Management</div>
+                <div class="card-tags"><span class="card-tag">Java</span><span class="card-tag">Hibernate</span><span class="card-tag">JSP</span><span class="card-tag">Servlets</span></div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-bg card-cert">SAHITYA FORUM<br><span style="font-size:0.65rem;opacity:0.7;letter-spacing:0;">Community · Cultural Platform</span></div>
+            <div class="card-overlay">
+                <div class="card-title">Gujarati Sahitya Forum — Global Cultural Community</div>
+                <div class="card-meta"><span class="match-sm">PHP/CodeIgniter</span> · CMS</div>
+                <div class="card-tags"><span class="card-tag">PHP</span><span class="card-tag">CodeIgniter</span><span class="card-tag">MySQL</span></div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-bg card-fs">NS4ED<br><span style="font-size:0.65rem;opacity:0.7;letter-spacing:0;">EdTech · Learning Platform</span></div>
+            <div class="card-overlay">
+                <div class="card-title">NS4ED — Educational Leadership & Learning Platform</div>
+                <div class="card-meta"><span class="match-sm">PHP/CodeIgniter</span> · Content Management</div>
+                <div class="card-tags"><span class="card-tag">PHP</span><span class="card-tag">CMS</span><span class="card-tag">JavaScript</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ CAREER EPISODES (EXPERIENCE) ═══ -->
+<div class="category" id="experience">
+    <div class="category-title">📺 Career Episodes — All Seasons <span class="explore">Explore All ›</span></div>
+    <div class="carousel">
+        <div class="card card-wide" onclick="openModal('gwu-gta')">
+            <div class="card-bg card-ai">GWU — GTA<br><span style="font-size:0.7rem;opacity:0.7;letter-spacing:0;">Model-Based Engineering Course</span></div>
+            <div class="card-overlay">
+                <div class="card-title">Graduate Teaching Assistant — GWU</div>
+                <div class="card-meta"><span class="match-sm">S6 — Current</span> · Jan 2025 — Present</div>
+                <div class="card-tags"><span class="card-tag">MBSE</span><span class="card-tag">Python</span><span class="card-tag">Teaching</span></div>
+            </div>
+        </div>
+        <div class="card card-wide" onclick="openModal('gwu-ra')">
+            <div class="card-bg card-web">GWU — RA<br><span style="font-size:0.7rem;opacity:0.7;letter-spacing:0;">Academic Website Migration</span></div>
+            <div class="card-overlay">
+                <div class="card-title">Research Assistant — Prof. Alexa Joubin</div>
+                <div class="card-meta"><span class="match-sm">S5</span> · Apr 2025 — Feb 2026</div>
+                <div class="card-tags"><span class="card-tag">WordPress</span><span class="card-tag">UI/UX</span><span class="card-tag">Accessibility</span></div>
+            </div>
+        </div>
+        <div class="card card-wide" onclick="openModal('gwu-intern')">
+            <div class="card-bg card-ml">GWU — INTERN<br><span style="font-size:0.7rem;opacity:0.7;letter-spacing:0;">AI/ML Prototypes · Raspberry Pi</span></div>
+            <div class="card-overlay">
+                <div class="card-title">Software Intern (AI/ML/RPi) — Prof. Eric Dano</div>
+                <div class="card-meta"><span class="match-sm">S4</span> · Feb 2025 — Dec 2025</div>
+                <div class="card-tags"><span class="card-tag">Python</span><span class="card-tag">MQTT</span><span class="card-tag">ML</span><span class="card-tag">Streamlit</span></div>
+            </div>
+        </div>
+        <div class="card card-wide" onclick="openModal('startups')">
+            <div class="card-bg card-data">STEALTH STARTUPS<br><span style="font-size:0.7rem;opacity:0.7;letter-spacing:0;">FinTech · EdTech · Full Stack</span></div>
+            <div class="card-overlay">
+                <div class="card-title">Software Engineer (Full-Stack) — GoScale, FriendSquare, ASG</div>
+                <div class="card-meta"><span class="match-sm">S3</span> · Aug 2022 — May 2024 · 1 yr 10 mos</div>
+                <div class="card-tags"><span class="card-tag">Python</span><span class="card-tag">MySQL</span><span class="card-tag">JavaScript</span></div>
+            </div>
+        </div>
+        <div class="card card-wide" onclick="openModal('cognizant')">
+            <div class="card-bg card-exp">COGNIZANT<br><span style="font-size:0.7rem;opacity:0.7;letter-spacing:0;">Enterprise · 100+ App Deployments</span></div>
+            <div class="card-overlay">
+                <div class="card-title">Programming Analyst — Cognizant Technology Solutions</div>
+                <div class="card-meta"><span class="match-sm">S2</span> · Jun 2021 — Jul 2022 · 1 yr 2 mos</div>
+                <div class="card-tags"><span class="card-tag">PowerShell</span><span class="card-tag">SCCM</span><span class="card-tag">SQL</span></div>
+            </div>
+        </div>
+        <div class="card card-wide" onclick="openModal('rootkings')">
+            <div class="card-bg card-fs">ROOT KINGS<br><span style="font-size:0.7rem;opacity:0.7;letter-spacing:0;">Superrfan · Social Platform</span></div>
+            <div class="card-overlay">
+                <div class="card-title">Web Developer — Root Kings</div>
+                <div class="card-meta"><span class="match-sm">S1</span> · Nov 2020 — May 2021 · 7 mos</div>
+                <div class="card-tags"><span class="card-tag">Vue.js</span><span class="card-tag">JavaScript</span><span class="card-tag">HTML/CSS</span></div>
+            </div>
+        </div>
+        <div class="card card-wide">
+            <div class="card-bg card-cert">TALENT ANYWHERE<br><span style="font-size:0.7rem;opacity:0.7;letter-spacing:0;">PHP · Platform Development</span></div>
+            <div class="card-overlay">
+                <div class="card-title">Software Engineer (PHP) — Talent Anywhere</div>
+                <div class="card-meta">Aug — Nov 2020 · 4 mos · Pune</div>
+                <div class="card-tags"><span class="card-tag">PHP</span><span class="card-tag">CodeIgniter</span><span class="card-tag">CMS</span></div>
+            </div>
+        </div>
+        <div class="card card-wide">
+            <div class="card-bg card-web">MAXGEN TECH<br><span style="font-size:0.7rem;opacity:0.7;letter-spacing:0;">Java · Web Development</span></div>
+            <div class="card-overlay">
+                <div class="card-title">Junior Java Developer — Maxgen Technologies</div>
+                <div class="card-meta">Jan — Jun 2020 · 6 mos · Pune</div>
+                <div class="card-tags"><span class="card-tag">Java</span><span class="card-tag">HTML/CSS</span><span class="card-tag">JavaScript</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ CERTIFICATIONS ═══ -->
+<div class="category" id="certifications">
+    <div class="category-title">🏆 Certified & Verified <span class="explore">Explore All ›</span></div>
+    <div class="carousel">
+        <div class="card"><div class="card-bg card-ai"><i class="fab fa-redhat" style="font-size:2.5rem;opacity:0.3;position:absolute;top:0.8rem;right:0.8rem;"></i>RED HAT<br><span style="font-size:0.65rem;opacity:0.7;letter-spacing:0;">System Administration I · RH124</span></div><div class="card-overlay"><div class="card-title">Red Hat System Administration I (RH124)</div><div class="card-meta">Apr 2025 · Red Hat · Ver. 9.3</div></div></div>
+        <div class="card"><div class="card-bg card-iot"><i class="fab fa-aws" style="font-size:2.5rem;opacity:0.3;position:absolute;top:0.8rem;right:0.8rem;"></i>AWS CLOUD<br><span style="font-size:0.65rem;opacity:0.7;letter-spacing:0;">Cloud Operations · Academy</span></div><div class="card-overlay"><div class="card-title">AWS Academy Graduate — Cloud Operations</div><div class="card-meta">Apr 2025 · Amazon Web Services</div></div></div>
+        <div class="card"><div class="card-bg card-data"><i class="fab fa-aws" style="font-size:2.5rem;opacity:0.3;position:absolute;top:0.8rem;right:0.8rem;"></i>AWS CLOUD<br><span style="font-size:0.65rem;opacity:0.7;letter-spacing:0;">Cloud Foundations · Academy</span></div><div class="card-overlay"><div class="card-title">AWS Academy Graduate — Cloud Foundations</div><div class="card-meta">Feb 2025 · Amazon Web Services</div></div></div>
+        <div class="card"><div class="card-bg card-exp">JAVA<br><span style="font-size:0.65rem;opacity:0.7;letter-spacing:0;">Programming · Udemy</span></div><div class="card-overlay"><div class="card-title">Java Programming</div><div class="card-meta">Udemy · Complete Course</div></div></div>
+        <div class="card"><div class="card-bg card-cert">PYTHON<br><span style="font-size:0.65rem;opacity:0.7;letter-spacing:0;">Programming · Udemy</span></div><div class="card-overlay"><div class="card-title">Python Programming</div><div class="card-meta">Udemy · Complete Course</div></div></div>
+        <div class="card"><div class="card-bg card-fs">SQL<br><span style="font-size:0.65rem;opacity:0.7;letter-spacing:0;">Fundamentals · DataCamp</span></div><div class="card-overlay"><div class="card-title">SQL Fundamentals</div><div class="card-meta">DataCamp · Data Querying</div></div></div>
+        <div class="card"><div class="card-bg card-ml">OOP IN JAVA<br><span style="font-size:0.65rem;opacity:0.7;letter-spacing:0;">Object-Oriented · Coursera</span></div><div class="card-overlay"><div class="card-title">Object Oriented Programming in Java</div><div class="card-meta">Coursera · Duke University</div></div></div>
+        <div class="card"><div class="card-bg card-web">LEARNING C<br><span style="font-size:0.65rem;opacity:0.7;letter-spacing:0;">Systems Programming · LinkedIn</span></div><div class="card-overlay"><div class="card-title">Learning C</div><div class="card-meta">LinkedIn Learning</div></div></div>
+        <div class="card"><div class="card-bg card-data">PYTHON<br><span style="font-size:0.65rem;opacity:0.7;letter-spacing:0;">Data Analysis · DataCamp</span></div><div class="card-overlay"><div class="card-title">Programming Using Python</div><div class="card-meta">DataCamp · Data Analysis</div></div></div>
+        <div class="card"><div class="card-bg card-iot">ITERATIVE PY<br><span style="font-size:0.65rem;opacity:0.7;letter-spacing:0;">Loops & Iteration · Coursera</span></div><div class="card-overlay"><div class="card-title">Introduction to Iterative Programming in Python</div><div class="card-meta">Coursera · University of Michigan</div></div></div>
+    </div>
+</div>
+
+<!-- ═══ REVIEWS (TESTIMONIALS) ═══ -->
+<div class="category" id="reviews">
+    <div class="category-title">⭐ Audience Reviews <span class="explore">See All ›</span></div>
+    <div class="carousel">
+        <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Ankita's ability to handle complex technical challenges, coupled with her relentless commitment to high-quality work, set her apart. Working with her has been one of the most enriching teamwork experiences I've had."</p>
+            <div class="testimonial-author"><div class="testimonial-avatar" style="background:linear-gradient(135deg,#e50914,#b20710);">AB</div><div><div class="testimonial-name">Akash Bhandari</div><div class="testimonial-role">Senior Manager, Cognizant</div></div></div>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"She takes complete ownership of her tasks, ensuring high-quality deliverables every time. Her eagerness to learn and willingness to step beyond conventional tasks is truly commendable."</p>
+            <div class="testimonial-author"><div class="testimonial-avatar" style="background:linear-gradient(135deg,#2980b9,#1a3a5c);">YK</div><div><div class="testimonial-name">Yash Kurzekar</div><div class="testimonial-role">Colleague, Cognizant</div></div></div>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"She consistently gave 100 percent effort and played a significant role in ensuring we completed assignments on time. Excellent time management and a knack for keeping everyone calm during crunch periods."</p>
+            <div class="testimonial-author"><div class="testimonial-avatar" style="background:linear-gradient(135deg,#27ae60,#1a5c3a);">SG</div><div><div class="testimonial-name">Shubham Gurjar</div><div class="testimonial-role">Colleague, Cognizant</div></div></div>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"What sets Ankita apart is her ability to think strategically and find innovative solutions to complex problems. She is a natural leader who inspires those around her."</p>
+            <div class="testimonial-author"><div class="testimonial-avatar" style="background:linear-gradient(135deg,#8e44ad,#3d1859);">SC</div><div><div class="testimonial-name">Samiksha Chintawar</div><div class="testimonial-role">Colleague, Cognizant</div></div></div>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"She was one of the most curious and quick learners I have ever come across — among those rare hardworking gems who deny to give up and try their best in every single task."</p>
+            <div class="testimonial-author"><div class="testimonial-avatar" style="background:linear-gradient(135deg,#d35400,#c0392b);">SN</div><div><div class="testimonial-name">Shruti Nimbarmunde</div><div class="testimonial-role">Colleague, Cognizant</div></div></div>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"She is highly skilled and always eager to explore and experiment. Her diligence and keen eye for details is an asset for every team."</p>
+            <div class="testimonial-author"><div class="testimonial-avatar" style="background:linear-gradient(135deg,#f39c12,#d35400);">KD</div><div><div class="testimonial-name">Krushn Dayshmookh</div><div class="testimonial-role">Professional Colleague</div></div></div>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"A passion for innovation with a proven track record of critical thinking and decision-making. Her creative talents will prove a valuable resource for any organization."</p>
+            <div class="testimonial-author"><div class="testimonial-avatar" style="background:linear-gradient(135deg,#3498db,#2980b9);">SR</div><div><div class="testimonial-name">Sakshi Rajput</div><div class="testimonial-role">Professional Colleague</div></div></div>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Always willing to go above and beyond. Her ability to think creatively and find innovative solutions impressed me most during our group projects."</p>
+            <div class="testimonial-author"><div class="testimonial-avatar" style="background:linear-gradient(135deg,#1abc9c,#16a085);">RM</div><div><div class="testimonial-name">Raju Mondal</div><div class="testimonial-role">Classmate, Chandigarh University</div></div></div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ CTA / CONTACT ═══ -->
+<section class="cta-section" id="contact">
+    <div class="cta-overline">NOW CASTING</div>
+    <h2 class="cta-title">READY FOR THE<br>NEXT EPISODE?</h2>
+    <p class="cta-sub">Actively seeking full-time roles in Software Engineering, ML Engineering, Data Analysis, Full-Stack, and Data Science starting May 2026. Let's write the next season together.</p>
+    <div class="cta-pills">
+        <a href="mailto:apimpalkar707@gmail.com" class="cta-pill"><i class="fas fa-envelope"></i> apimpalkar707@gmail.com</a>
+        <a href="https://www.linkedin.com/in/ankita-pimpalkar-7510a9174/" target="_blank" class="cta-pill"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+        <a href="https://github.com/AnkitaPimpalkar08" target="_blank" class="cta-pill"><i class="fab fa-github"></i> GitHub</a>
+    </div>
+    <a href="mailto:apimpalkar707@gmail.com" class="cta-button"><i class="fas fa-play"></i> Start Conversation</a>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-links">
+            <div class="footer-col">
+                <h4>Navigate</h4>
+                <a href="#projects-ml">AI/ML Projects</a>
+                <a href="#projects-fs">Full Stack Projects</a>
+                <a href="#experience">Experience</a>
+            </div>
+            <div class="footer-col">
+                <h4>Credentials</h4>
+                <a href="#certifications">Certifications</a>
+                <a href="#reviews">Reviews</a>
+                <a href="AnkitaVilasPimpalkar_Resume.pdf" download>Resume</a>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <a href="mailto:apimpalkar707@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/ankita-pimpalkar-7510a9174/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/AnkitaPimpalkar08" target="_blank">GitHub</a>
+            </div>
+            <div class="footer-col">
+                <h4>Targeting</h4>
+                <a href="#">Software Engineer</a>
+                <a href="#">ML Engineer</a>
+                <a href="#">Data Scientist</a>
+                <a href="#">Full Stack Engineer</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AnkitaFlix — Ankita Vilas Pimpalkar. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/ankita-pimpalkar-7510a9174/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/AnkitaPimpalkar08" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:apimpalkar707@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ═══ MODAL ═══ -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal">
+        <div class="modal-hero" id="modalHero">
+            <div class="modal-hero-bg" id="modalHeroBg"></div>
+            <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            <div class="modal-title-area">
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <div class="modal-meta" id="modalMeta"></div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <p class="modal-desc" id="modalDesc"></p>
+            <div id="modalTags"></div>
+            <div id="modalHighlights"></div>
+            <div id="modalLink"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+// ═══ NAV SCROLL ═══
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+
+// ═══ MOBILE MENU ═══
+const toggle = document.getElementById('mobileToggle');
+const links = document.getElementById('navLinks');
+const icon = document.getElementById('menuIcon');
+toggle.addEventListener('click', () => {
+    links.classList.toggle('open');
+    icon.classList.toggle('fa-bars');
+    icon.classList.toggle('fa-times');
+});
+links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    icon.classList.add('fa-bars');
+    icon.classList.remove('fa-times');
+}));
+
+// ═══ SMOOTH SCROLL ═══
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+        e.preventDefault();
+        const t = document.querySelector(this.getAttribute('href'));
+        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+});
+
+// ═══ MODAL DATA ═══
+const modals = {
+    echosense: {
+        title: 'ECHOSENSE', color: 'card-ml',
+        meta: '<span class="match">96% Accuracy</span> · Deep Learning · Cloud GPU',
+        desc: 'End-to-end deep learning pipeline for environmental sound classification with ResNet-based CNN architecture. Includes automated mel-spectrogram generation, intermediate layer visualization, TensorBoard integration, and real-time prediction interface. Trained on Modal cloud GPU (A10G).',
+        tags: ['Python','PyTorch','Modal','ResNet','TensorBoard','Mel-Spectrograms'],
+        highlights: ['ResNet-based CNN architecture for audio classification','Automated mel-spectrogram generation pipeline','Intermediate layer visualization for model interpretability','Real-time prediction interface','Trained on Modal cloud GPU (A10G)'],
+        link: 'https://github.com/AnkitaPimpalkar08/EchoSense-main'
+    },
+    anomaly: {
+        title: 'REAL-TIME ANOMALY DETECTION', color: 'card-iot',
+        meta: '<span class="match">200K+ Observations</span> · IoT · Edge',
+        desc: 'Built streaming data pipeline using Python and MQTT processing 200,000+ IoT sensor observations. Implemented Isolation Forest with 10-sample rolling window for edge deployment on Raspberry Pi 4 (1GB RAM). Developed Streamlit dashboard for live monitoring with 45% compute overhead reduction.',
+        tags: ['Python','MQTT','Streamlit','Isolation Forest','Raspberry Pi','IoT'],
+        highlights: ['Streaming data pipeline processing 200K+ sensor observations','Isolation Forest with rolling window for edge deployment','Streamlit dashboard for live monitoring','45% compute overhead reduction on Raspberry Pi 4','Real-time anomaly detection on 1GB RAM device'],
+        link: 'https://github.com/AnkitaPimpalkar08/AnomalyDetection_RaspberryPi'
+    },
+    handwriting: {
+        title: 'HANDWRITTEN CHARACTER RECOGNITION', color: 'card-ai',
+        meta: '<span class="match">96% Accuracy</span> · CNN · Computer Vision',
+        desc: 'CNN-based expert system for handwritten character recognition using Artificial Neural Networks. Achieved 96% test accuracy on MNIST dataset with comprehensive calibration analysis and error pattern visualization.',
+        tags: ['TensorFlow','CNN','OpenCV','Python','MNIST'],
+        highlights: ['96% test accuracy on MNIST dataset','Comprehensive calibration analysis','Confidence distribution analysis','Error pattern visualization'],
+        link: 'https://github.com/AnkitaPimpalkar08/HandwrittenCharacterRecognition'
+    },
+    voice: {
+        title: 'AI PERSONAL VOICE ASSISTANT', color: 'card-ml',
+        meta: '<span class="match">NLP</span> · Voice Recognition · Desktop',
+        desc: 'Voice-activated personal assistant for desktop users. Implements note-taking, music playback, weather information, and calculations. Designed to help less tech-savvy users interact with computers naturally.',
+        tags: ['Python','NLP','Voice Recognition','APIs'],
+        highlights: ['Voice-activated command processing','Note-taking and music playback from YouTube','Weather information fetching','Desktop assistant similar to Siri/Google Assistant'],
+        link: 'https://github.com/AnkitaPimpalkar08/Personal_assistant'
+    },
+    mentalhealth: {
+        title: 'SOCIAL MEDIA & MENTAL HEALTH', color: 'card-data',
+        meta: '<span class="match">Data Science</span> · ML · Analysis',
+        desc: 'Data science project analyzing the relationship between social media usage patterns and mental health indicators. Implemented statistical analysis, data visualization, and machine learning models to identify correlations and trends.',
+        tags: ['Python','Pandas','Scikit-learn','Matplotlib','Data Analysis'],
+        highlights: ['Statistical analysis of social media usage patterns','ML models to identify correlations with mental health','Comprehensive data visualization','Trend identification and reporting'],
+        link: 'https://github.com/AnkitaPimpalkar08/SocialMediaAndMentalHealthAnalysis'
+    },
+    greenshoes: {
+        title: 'GREENSHOES E-COMMERCE', color: 'card-fs',
+        meta: '<span class="match">Full Stack</span> · React · PostgreSQL',
+        desc: 'Full-stack e-commerce website with product catalog, advanced filtering, shopping cart, and user authentication. PostgreSQL database schema for order management and inventory tracking. React + Tailwind frontend with REST APIs.',
+        tags: ['React','Vite','Tailwind CSS','Node.js','PostgreSQL','REST APIs'],
+        highlights: ['Product catalog with advanced filtering','Shopping cart and user authentication','PostgreSQL schema for orders and inventory','Responsive React + Tailwind frontend','RESTful API backend'],
+        link: 'https://github.com/AnkitaPimpalkar08/greenshoes-eco-shoe-store-frontend'
+    },
+    superrfan: {
+        title: 'SUPERRFAN APP', color: 'card-web',
+        meta: '<span class="match">Vue.js</span> · Social Gaming',
+        desc: 'Celebrity game-based social media platform where users create teams, rate team members, and earn rewards based on performance. Built with Vue.js for a seamless user experience.',
+        tags: ['Vue.js','JavaScript','HTML/CSS'],
+        highlights: ['Team creation and rating system','Performance-based reward and monetary system','Significant increase in user engagement','Seamless UI with Vue.js']
+    },
+    soil: {
+        title: 'SOIL SENSOR APPLICATION', color: 'card-iot',
+        meta: '<span class="match">IoT</span> · Agriculture · RPi',
+        desc: 'Raspberry Pi-based IoT application for real-time soil monitoring using environmental sensors. Data collection, processing, and visualization for agricultural automation and smart farming.',
+        tags: ['Python','Raspberry Pi','IoT','Sensors'],
+        highlights: ['Real-time soil monitoring','Environmental sensor data collection','Agricultural automation','Smart farming visualization'],
+        link: 'https://github.com/AnkitaPimpalkar08/Soil-sensor-application'
+    },
+    ecommerce: {
+        title: 'E-COMMERCE + PAYU', color: 'card-exp',
+        meta: '<span class="match">Java</span> · Payments · Full Stack',
+        desc: 'Business model e-commerce website with PayU Money payment integration, shopping cart, wishlist, recently viewed items, order tracking, and cancellation functionality.',
+        tags: ['Java','Hibernate','JSP','Servlets','PayU Money'],
+        highlights: ['PayU Money payment integration','Shopping cart and wishlist','Order tracking and cancellation','Recently viewed items']
+    },
+    'gwu-gta': {
+        title: 'GRADUATE TEACHING ASSISTANT', color: 'card-ai',
+        meta: '<span class="match">GWU</span> · Jan 2025 — Present · 1 yr 4 mos',
+        desc: 'Supported delivery of the Model-Based Engineering course under Prof. Eric Dano by assisting with coursework execution and preparing learning support resources.',
+        tags: ['Teaching','MBSE','Python','Course Development'],
+        highlights: ['Assisting with Model-Based Engineering coursework execution','Preparing learning support resources for students','Resolving student questions escalated by the instructor','Maintaining notes and materials reinforcing key course concepts']
+    },
+    'gwu-ra': {
+        title: 'RESEARCH ASSISTANT', color: 'card-web',
+        meta: '<span class="match">GWU</span> · Apr 2025 — Feb 2026 · 11 mos',
+        desc: 'Collaborating with Prof. Alexa Joubin to lead migration of academic and open-education websites to WordPress (GW Blogs).',
+        tags: ['Front-End Design','WordPress','UI/UX','Accessibility'],
+        highlights: ['Leading migration of joubin.org, Screening Shakespeare, and Critical Theory','Migrating to WordPress (GW Blogs) platform','Designing and testing UI/UX templates and layout options','Improving site accessibility, scalability, and user experience']
+    },
+    'gwu-intern': {
+        title: 'SOFTWARE INTERN (AI/ML/RPI)', color: 'card-ml',
+        meta: '<span class="match">GWU</span> · Feb 2025 — Dec 2025 · 11 mos',
+        desc: 'Built and enhanced internal applications and demo prototypes to support Prof. Eric Dano\'s coursework and lab operations.',
+        tags: ['Python','MQTT','Raspberry Pi','Streamlit','AI/ML','Documentation'],
+        highlights: ['Built internal applications and demo prototypes','Delivered demos used to illustrate course concepts','Iterated quickly based on instructor feedback','Created structured documentation for clarity and reuse']
+    },
+    startups: {
+        title: 'STEALTH STARTUPS', color: 'card-data',
+        meta: '<span class="match">Full Stack</span> · Aug 2022 — May 2024 · 1 yr 10 mos',
+        desc: 'Full-stack software engineering across early-stage fintech startups (GoScale, FriendSquare, Alternative Structure Group).',
+        tags: ['Python','MySQL','JavaScript','PHP','CodeIgniter'],
+        highlights: ['Designed MySQL schemas for apps serving 10,000+ users','Improved query performance, reduced page load times by 40%','Built full-stack features with Python, MySQL, and JavaScript','Contributed to technical architecture planning across cross-functional teams']
+    },
+    cognizant: {
+        title: 'COGNIZANT', color: 'card-exp',
+        meta: '<span class="match">Programming Analyst</span> · Jun 2021 — Jul 2022',
+        desc: 'Enterprise application deployment and database management at scale.',
+        tags: ['PowerShell','SCCM','SQL','Intune','VBScript'],
+        highlights: ['Deployed 100+ apps across 10,000+ endpoints — 98% success rate','Automated provisioning workflows — 40% setup time reduction','Managed SQL databases with 10,000+ records','Ensured data accuracy and system availability across production']
+    },
+    rootkings: {
+        title: 'ROOT KINGS', color: 'card-fs',
+        meta: '<span class="match">Web Developer</span> · Nov 2020 — May 2021 · 7 mos',
+        desc: 'Developed Superrfan-App, a celebrity game-based social media platform.',
+        tags: ['Vue.js','JavaScript','HTML/CSS'],
+        highlights: ['Built team creation and rating functionality with Vue.js','Implemented reward system based on user ratings','Significantly increased user engagement','Collaborated with designers for seamless UX']
+    }
+};
+
+function openModal(id) {
+    const d = modals[id];
+    if (!d) return;
+    document.getElementById('modalHeroBg').className = 'modal-hero-bg ' + d.color;
+    document.getElementById('modalTitle').textContent = d.title;
+    document.getElementById('modalMeta').innerHTML = d.meta;
+    document.getElementById('modalDesc').textContent = d.desc;
+    document.getElementById('modalTags').innerHTML = d.tags ?
+        '<div class="modal-section-title">Tech Stack</div><div class="modal-tags">' + d.tags.map(t => '<span class="modal-tag">' + t + '</span>').join('') + '</div>' : '';
+    document.getElementById('modalHighlights').innerHTML = d.highlights ?
+        '<div class="modal-section-title">Highlights</div><ul class="modal-highlights">' + d.highlights.map(h => '<li>' + h + '</li>').join('') + '</ul>' : '';
+    document.getElementById('modalLink').innerHTML = d.link ?
+        '<a href="' + d.link + '" target="_blank" class="modal-link"><i class="fab fa-github"></i> View on GitHub</a>' : '';
+    document.getElementById('modalOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
 </body>
 </html>
