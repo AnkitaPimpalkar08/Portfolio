@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AnkitaFlix — Stream My Career</title>
+    <title>Ankita Vilas Pimpalkar — Stream My Career</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -790,7 +790,158 @@
         .modal-link:hover { background: #ddd; }
 
         /* ═══ RESPONSIVE ═══ */
+        /* ═══ SKILL PILLS ═══ */
+        .skill-pill {
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid #2a2a2a;
+            color: var(--text);
+            font-size: 0.8rem;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all 0.3s;
+        }
+        .skill-pill:hover { border-color: var(--red); color: var(--white); background: rgba(229,9,20,0.1); }
+        .skill-pill.skill-accent {
+            background: rgba(229,9,20,0.08);
+            border-color: rgba(229,9,20,0.2);
+            color: var(--red);
+            font-weight: 600;
+        }
+        @keyframes skillScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ═══ EPISODE LIST (CAREER) ═══ */
+        .episode-list { padding: 0 4%; margin-bottom: 3rem; }
+        .episode-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+        .episode-header h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        .episode-season-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            letter-spacing: 0.1em;
+        }
+        .episode {
+            display: grid;
+            grid-template-columns: 60px 200px 1fr auto;
+            gap: 1.5rem;
+            align-items: center;
+            padding: 1.2rem 1.5rem;
+            border-radius: var(--radius);
+            border-bottom: 1px solid #1e1e1e;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .episode:hover {
+            background: var(--bg-card);
+            border-color: transparent;
+            transform: translateX(6px);
+        }
+        .episode-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--text-dim);
+            text-align: center;
+        }
+        .episode:hover .episode-number { color: var(--red); }
+        .episode-thumb {
+            width: 200px;
+            aspect-ratio: 16/9;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-align: center;
+            padding: 0.5rem;
+            line-height: 1.2;
+            position: relative;
+            overflow: hidden;
+        }
+        .episode-thumb .ep-sub {
+            display: block;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.55rem;
+            opacity: 0.7;
+            letter-spacing: 0;
+            margin-top: 0.2rem;
+        }
+        .episode-info { min-width: 0; }
+        .episode-info h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+            line-height: 1.3;
+        }
+        .episode-info .ep-company {
+            font-size: 0.8rem;
+            color: var(--red);
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+        .episode-info .ep-desc {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            line-height: 1.55;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .episode-info .ep-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-top: 0.5rem;
+        }
+        .episode-right {
+            text-align: right;
+            white-space: nowrap;
+        }
+        .episode-right .ep-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-dim);
+        }
+        .episode-right .ep-duration {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+        }
+        .episode-right .ep-status {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.3rem;
+        }
+        .ep-current { background: rgba(70,211,105,0.15); color: var(--green); }
+        .ep-complete { background: rgba(255,255,255,0.06); color: var(--text-dim); }
+
         @media (max-width: 768px) {
+            .episode {
+                grid-template-columns: 40px 1fr;
+                gap: 0.8rem;
+            }
+            .episode-thumb { display: none; }
+            .episode-right { display: none; }
+            .episode-number { font-size: 1.5rem; }
             .mobile-toggle { display: block; }
             .nav-links {
                 position: fixed;
@@ -809,8 +960,6 @@
             .billboard-title { font-size: clamp(3rem, 10vw, 5rem); }
             .card { width: 180px; }
             .card-wide { width: 280px; }
-            .top10-number { font-size: 5rem; }
-            .top10-card { width: 120px; height: 165px; }
             .testimonial-card { width: 300px; }
             .modal-body, .modal-hero { padding-left: 1.5rem; padding-right: 1.5rem; }
             .modal-title { font-size: 1.8rem; }
@@ -856,11 +1005,9 @@
         <div class="billboard-badge"><i class="fas fa-bolt"></i> Now Streaming — Season 2026</div>
         <h1 class="billboard-title">ANKITA <span>PIMPALKAR</span></h1>
         <div class="billboard-meta">
-            <span class="match">98% Match</span>
+            <span class="match">100% Match</span>
             <span class="rating">SWE</span>
             <span>3+ Seasons</span>
-            <span>·</span>
-            <span>12 Episodes</span>
             <span>·</span>
             <span>Washington D.C.</span>
         </div>
@@ -876,31 +1023,31 @@
 
 <!-- ═══ WHAT I BRING TO THE TABLE ═══ -->
 <div class="category" id="skills" style="margin-top:-2rem; margin-bottom:3.5rem;">
-    <div class="category-title">🎯 What I Bring to the Table</div>
+    <div class="category-title">What I Bring to the Table</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:0.5rem;">
         <div style="background:var(--bg-card);border:1px solid #2a2a2a;border-radius:var(--radius);padding:1.5rem;transition:all 0.3s;border-left:3px solid var(--red);" onmouseenter="this.style.borderColor='var(--red)';this.style.transform='translateY(-3px)'" onmouseleave="this.style.borderColor='#2a2a2a';this.style.transform='none';this.style.borderLeftColor='var(--red)'">
-            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.8rem;"><span style="font-size:1.2rem;">🧠</span><strong style="font-size:0.95rem;">AI / Machine Learning</strong></div>
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.8rem;"><span style="font-size:1.2rem;"></span><strong style="font-size:0.95rem;">AI / Machine Learning</strong></div>
             <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.8rem;">Building production ML pipelines — from data preprocessing to model deployment on edge devices and cloud GPUs.</p>
             <div style="display:flex;flex-wrap:wrap;gap:0.3rem;">
                 <span class="card-tag">PyTorch</span><span class="card-tag">TensorFlow</span><span class="card-tag">Scikit-learn</span><span class="card-tag">NLP</span><span class="card-tag">CNNs</span><span class="card-tag">Anomaly Detection</span><span class="card-tag">Edge ML</span><span class="card-tag">Modal</span>
             </div>
         </div>
         <div style="background:var(--bg-card);border:1px solid #2a2a2a;border-radius:var(--radius);padding:1.5rem;transition:all 0.3s;border-left:3px solid #3498db;" onmouseenter="this.style.borderColor='#3498db';this.style.transform='translateY(-3px)'" onmouseleave="this.style.borderColor='#2a2a2a';this.style.transform='none';this.style.borderLeftColor='#3498db'">
-            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.8rem;"><span style="font-size:1.2rem;">⚡</span><strong style="font-size:0.95rem;">Full-Stack Development</strong></div>
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.8rem;"><span style="font-size:1.2rem;"></span><strong style="font-size:0.95rem;">Full-Stack Development</strong></div>
             <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.8rem;">End-to-end web applications — responsive frontends, RESTful APIs, and robust backend architectures.</p>
             <div style="display:flex;flex-wrap:wrap;gap:0.3rem;">
                 <span class="card-tag">React</span><span class="card-tag">Vue.js</span><span class="card-tag">Node.js</span><span class="card-tag">JavaScript</span><span class="card-tag">HTML/CSS</span><span class="card-tag">Tailwind</span><span class="card-tag">PHP</span><span class="card-tag">CodeIgniter</span><span class="card-tag">REST APIs</span>
             </div>
         </div>
         <div style="background:var(--bg-card);border:1px solid #2a2a2a;border-radius:var(--radius);padding:1.5rem;transition:all 0.3s;border-left:3px solid var(--green);" onmouseenter="this.style.borderColor='var(--green)';this.style.transform='translateY(-3px)'" onmouseleave="this.style.borderColor='#2a2a2a';this.style.transform='none';this.style.borderLeftColor='var(--green)'">
-            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.8rem;"><span style="font-size:1.2rem;">📊</span><strong style="font-size:0.95rem;">Data Engineering & Analysis</strong></div>
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.8rem;"><span style="font-size:1.2rem;"></span><strong style="font-size:0.95rem;">Data Engineering & Analysis</strong></div>
             <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.8rem;">ETL pipelines, streaming data systems, database design, and statistical analysis at scale.</p>
             <div style="display:flex;flex-wrap:wrap;gap:0.3rem;">
                 <span class="card-tag">Python</span><span class="card-tag">SQL</span><span class="card-tag">PostgreSQL</span><span class="card-tag">MySQL</span><span class="card-tag">Pandas</span><span class="card-tag">MQTT</span><span class="card-tag">Streamlit</span><span class="card-tag">ETL</span><span class="card-tag">Data Visualization</span>
             </div>
         </div>
         <div style="background:var(--bg-card);border:1px solid #2a2a2a;border-radius:var(--radius);padding:1.5rem;transition:all 0.3s;border-left:3px solid var(--gold);" onmouseenter="this.style.borderColor='var(--gold)';this.style.transform='translateY(-3px)'" onmouseleave="this.style.borderColor='#2a2a2a';this.style.transform='none';this.style.borderLeftColor='var(--gold)'">
-            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.8rem;"><span style="font-size:1.2rem;">☁️</span><strong style="font-size:0.95rem;">DevOps, Cloud & IoT</strong></div>
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.8rem;"><span style="font-size:1.2rem;"></span><strong style="font-size:0.95rem;">DevOps, Cloud & IoT</strong></div>
             <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.8rem;">Cloud deployment, containerization, IoT sensor systems, and edge computing on resource-constrained devices.</p>
             <div style="display:flex;flex-wrap:wrap;gap:0.3rem;">
                 <span class="card-tag">AWS</span><span class="card-tag">Docker</span><span class="card-tag">Raspberry Pi</span><span class="card-tag">Linux</span><span class="card-tag">Red Hat</span><span class="card-tag">SCCM</span><span class="card-tag">PowerShell</span><span class="card-tag">Git</span>
@@ -909,26 +1056,19 @@
     </div>
 </div>
 
-<!-- ═══ TOP 10 SKILLS ═══ -->
-<div class="category">
-    <div class="category-title">🔟 Top 10 Skills in D.C. Today <span class="explore">Explore All ›</span></div>
-    <div class="top10-row">
-        <div class="top10-item"><div class="top10-number">1</div><div class="top10-card card-fs"><div class="card-bg">PYTHON</div><div class="top10-info"><h4>Python</h4><p>AI/ML · Backend · Data</p></div></div></div>
-        <div class="top10-item"><div class="top10-number">2</div><div class="top10-card card-web"><div class="card-bg">REACT</div><div class="top10-info"><h4>React</h4><p>Frontend · Full-Stack</p></div></div></div>
-        <div class="top10-item"><div class="top10-number">3</div><div class="top10-card card-data"><div class="card-bg">SQL</div><div class="top10-info"><h4>SQL</h4><p>Data · Backend</p></div></div></div>
-        <div class="top10-item"><div class="top10-number">4</div><div class="top10-card card-ml"><div class="card-bg">PYTORCH</div><div class="top10-info"><h4>PyTorch</h4><p>Deep Learning · ML</p></div></div></div>
-        <div class="top10-item"><div class="top10-number">5</div><div class="top10-card card-fs"><div class="card-bg">NODE.JS</div><div class="top10-info"><h4>Node.js</h4><p>Backend · APIs</p></div></div></div>
-        <div class="top10-item"><div class="top10-number">6</div><div class="top10-card card-ai"><div class="card-bg">TENSORFLOW</div><div class="top10-info"><h4>TensorFlow</h4><p>ML · Neural Networks</p></div></div></div>
-        <div class="top10-item"><div class="top10-number">7</div><div class="top10-card card-web"><div class="card-bg">JAVASCRIPT</div><div class="top10-info"><h4>JavaScript</h4><p>Frontend · Full-Stack</p></div></div></div>
-        <div class="top10-item"><div class="top10-number">8</div><div class="top10-card card-data"><div class="card-bg">POSTGRESQL</div><div class="top10-info"><h4>PostgreSQL</h4><p>Database · Data Eng</p></div></div></div>
-        <div class="top10-item"><div class="top10-number">9</div><div class="top10-card card-cert"><div class="card-bg">AWS</div><div class="top10-info"><h4>AWS</h4><p>Cloud · DevOps</p></div></div></div>
-        <div class="top10-item"><div class="top10-number">10</div><div class="top10-card card-iot"><div class="card-bg">RASPBERRY PI</div><div class="top10-info"><h4>Raspberry Pi</h4><p>IoT · Edge Deploy</p></div></div></div>
+<!-- ═══ SKILLS STREAM ═══ -->
+<div style="padding:2rem 0;border-top:1px solid #222;border-bottom:1px solid #222;overflow:hidden;margin-bottom:2rem;">
+    <div class="category-title" style="padding:0 4%;margin-bottom:1rem;">🛠️ Tech Stack</div>
+    <div style="display:flex;gap:0.5rem;animation:skillScroll 40s linear infinite;width:max-content;">
+        <span class="skill-pill">Python</span><span class="skill-pill">JavaScript</span><span class="skill-pill">Java</span><span class="skill-pill">SQL</span><span class="skill-pill">PHP</span><span class="skill-pill">HTML/CSS</span><span class="skill-pill">React</span><span class="skill-pill">Vue.js</span><span class="skill-pill">Node.js</span><span class="skill-pill">Tailwind CSS</span><span class="skill-pill">CodeIgniter</span><span class="skill-pill">PyTorch</span><span class="skill-pill">TensorFlow</span><span class="skill-pill">Scikit-learn</span><span class="skill-pill">Pandas</span><span class="skill-pill">OpenCV</span><span class="skill-pill">NLP</span><span class="skill-pill">PostgreSQL</span><span class="skill-pill">MySQL</span><span class="skill-pill">REST APIs</span><span class="skill-pill">MQTT</span><span class="skill-pill">Streamlit</span><span class="skill-pill">AWS</span><span class="skill-pill">Docker</span><span class="skill-pill">Linux</span><span class="skill-pill">Red Hat</span><span class="skill-pill">Raspberry Pi</span><span class="skill-pill">PowerShell</span><span class="skill-pill">SCCM</span><span class="skill-pill">Git</span><span class="skill-pill">WordPress</span><span class="skill-pill">Vite</span><span class="skill-pill skill-accent">Machine Learning</span><span class="skill-pill skill-accent">Deep Learning</span><span class="skill-pill skill-accent">Data Analysis</span><span class="skill-pill skill-accent">ETL Pipelines</span><span class="skill-pill skill-accent">Edge Computing</span><span class="skill-pill skill-accent">IoT Systems</span><span class="skill-pill skill-accent">UI/UX Design</span>
+        <!-- duplicate for seamless loop -->
+        <span class="skill-pill">Python</span><span class="skill-pill">JavaScript</span><span class="skill-pill">Java</span><span class="skill-pill">SQL</span><span class="skill-pill">PHP</span><span class="skill-pill">HTML/CSS</span><span class="skill-pill">React</span><span class="skill-pill">Vue.js</span><span class="skill-pill">Node.js</span><span class="skill-pill">Tailwind CSS</span><span class="skill-pill">CodeIgniter</span><span class="skill-pill">PyTorch</span><span class="skill-pill">TensorFlow</span><span class="skill-pill">Scikit-learn</span><span class="skill-pill">Pandas</span><span class="skill-pill">OpenCV</span><span class="skill-pill">NLP</span><span class="skill-pill">PostgreSQL</span><span class="skill-pill">MySQL</span><span class="skill-pill">REST APIs</span><span class="skill-pill">MQTT</span><span class="skill-pill">Streamlit</span><span class="skill-pill">AWS</span><span class="skill-pill">Docker</span><span class="skill-pill">Linux</span><span class="skill-pill">Red Hat</span><span class="skill-pill">Raspberry Pi</span><span class="skill-pill">PowerShell</span><span class="skill-pill">SCCM</span><span class="skill-pill">Git</span><span class="skill-pill">WordPress</span><span class="skill-pill">Vite</span><span class="skill-pill skill-accent">Machine Learning</span><span class="skill-pill skill-accent">Deep Learning</span><span class="skill-pill skill-accent">Data Analysis</span><span class="skill-pill skill-accent">ETL Pipelines</span><span class="skill-pill skill-accent">Edge Computing</span><span class="skill-pill skill-accent">IoT Systems</span><span class="skill-pill skill-accent">UI/UX Design</span>
     </div>
 </div>
 
 <!-- ═══ TRENDING IN ML / AI ═══ -->
 <div class="category" id="projects-ml">
-    <div class="category-title">🔥 Trending in AI / Machine Learning <span class="explore">Explore All ›</span></div>
+    <div class="category-title">Trending in AI / Machine Learning <span class="explore">Explore All ›</span></div>
     <div class="carousel">
         <div class="card" onclick="openModal('echosense')">
             <div class="card-bg card-ml">ECHOSENSE<br><span style="font-size:0.65rem;opacity:0.7;letter-spacing:0;">Sound Classification · Deep Learning</span></div>
@@ -988,7 +1128,7 @@
     </div>
 </div>
 
-<!-- ═══ FULL STACK ORIGINALS ═══ -->
+<!-- ═══ Projects ═══ -->
 <div class="category" id="projects-fs">
     <div class="category-title">💻 Full Stack Originals <span class="explore">Explore All ›</span></div>
     <div class="carousel">
@@ -1049,73 +1189,138 @@
     </div>
 </div>
 
-<!-- ═══ CAREER EPISODES (EXPERIENCE) ═══ -->
-<div class="category" id="experience">
-    <div class="category-title">📺 Career Episodes — All Seasons <span class="explore">Explore All ›</span></div>
-    <div class="carousel">
-        <div class="card card-wide" onclick="openModal('gwu-gta')">
-            <div class="card-bg card-ai">GWU — GTA<br><span style="font-size:0.7rem;opacity:0.7;letter-spacing:0;">Model-Based Engineering Course</span></div>
-            <div class="card-overlay">
-                <div class="card-title">Graduate Teaching Assistant — GWU</div>
-                <div class="card-meta"><span class="match-sm">S6 — Current</span> · Jan 2025 — Present</div>
-                <div class="card-tags"><span class="card-tag">MBSE</span><span class="card-tag">Python</span><span class="card-tag">Teaching</span></div>
-            </div>
+<!-- ═══ CAREER EPISODES ═══ -->
+<div class="episode-list" id="experience">
+    <div class="episode-header">
+        <h2>Career — The Full Story</h2>
+        <div class="episode-season-label">8 EPISODES · 3+ SEASONS</div>
+    </div>
+
+    <div class="episode" onclick="openModal('gwu-gta')">
+        <div class="episode-number">1</div>
+        <div class="episode-thumb card-ai">GWU — GTA<span class="ep-sub">Teaching · MBSE</span></div>
+        <div class="episode-info">
+            <div class="ep-company">The George Washington University</div>
+            <h3>Graduate Teaching Assistant / Graduate Instructional Assistant</h3>
+            <p class="ep-desc">Supported delivery of the Model-Based Engineering course under Prof. Eric Dano. Assisting with coursework execution, preparing learning support resources, and resolving student questions.</p>
+            <div class="ep-tags"><span class="card-tag">MBSE</span><span class="card-tag">Python</span><span class="card-tag">Teaching</span></div>
         </div>
-        <div class="card card-wide" onclick="openModal('gwu-ra')">
-            <div class="card-bg card-web">GWU — RA<br><span style="font-size:0.7rem;opacity:0.7;letter-spacing:0;">Academic Website Migration</span></div>
-            <div class="card-overlay">
-                <div class="card-title">Research Assistant — Prof. Alexa Joubin</div>
-                <div class="card-meta"><span class="match-sm">S5</span> · Apr 2025 — Feb 2026</div>
-                <div class="card-tags"><span class="card-tag">WordPress</span><span class="card-tag">UI/UX</span><span class="card-tag">Accessibility</span></div>
-            </div>
+        <div class="episode-right">
+            <div class="ep-date">Jan 2025 — Present</div>
+            <div class="ep-duration">1 yr 4 mos</div>
+            <span class="ep-status ep-current">● Now</span>
         </div>
-        <div class="card card-wide" onclick="openModal('gwu-intern')">
-            <div class="card-bg card-ml">GWU — INTERN<br><span style="font-size:0.7rem;opacity:0.7;letter-spacing:0;">AI/ML Prototypes · Raspberry Pi</span></div>
-            <div class="card-overlay">
-                <div class="card-title">Software Intern (AI/ML/RPi) — Prof. Eric Dano</div>
-                <div class="card-meta"><span class="match-sm">S4</span> · Feb 2025 — Dec 2025</div>
-                <div class="card-tags"><span class="card-tag">Python</span><span class="card-tag">MQTT</span><span class="card-tag">ML</span><span class="card-tag">Streamlit</span></div>
-            </div>
+    </div>
+
+    <div class="episode" onclick="openModal('gwu-ra')">
+        <div class="episode-number">2</div>
+        <div class="episode-thumb card-web">GWU — RA<span class="ep-sub">Web Migration</span></div>
+        <div class="episode-info">
+            <div class="ep-company">The George Washington University</div>
+            <h3>Research Assistant</h3>
+            <p class="ep-desc">Collaborating with Prof. Alexa Joubin to lead migration of academic websites (joubin.org, Screening Shakespeare, Critical Theory) to WordPress. Designing UI/UX templates for accessibility and scalability.</p>
+            <div class="ep-tags"><span class="card-tag">WordPress</span><span class="card-tag">UI/UX</span><span class="card-tag">Front-End Design</span><span class="card-tag">Accessibility</span></div>
         </div>
-        <div class="card card-wide" onclick="openModal('startups')">
-            <div class="card-bg card-data">STEALTH STARTUPS<br><span style="font-size:0.7rem;opacity:0.7;letter-spacing:0;">FinTech · EdTech · Full Stack</span></div>
-            <div class="card-overlay">
-                <div class="card-title">Software Engineer (Full-Stack) — GoScale, FriendSquare, ASG</div>
-                <div class="card-meta"><span class="match-sm">S3</span> · Aug 2022 — May 2024 · 1 yr 10 mos</div>
-                <div class="card-tags"><span class="card-tag">Python</span><span class="card-tag">MySQL</span><span class="card-tag">JavaScript</span></div>
-            </div>
+        <div class="episode-right">
+            <div class="ep-date">Apr 2025 — Feb 2026</div>
+            <div class="ep-duration">11 mos</div>
+            <span class="ep-status ep-complete">Complete</span>
         </div>
-        <div class="card card-wide" onclick="openModal('cognizant')">
-            <div class="card-bg card-exp">COGNIZANT<br><span style="font-size:0.7rem;opacity:0.7;letter-spacing:0;">Enterprise · 100+ App Deployments</span></div>
-            <div class="card-overlay">
-                <div class="card-title">Programming Analyst — Cognizant Technology Solutions</div>
-                <div class="card-meta"><span class="match-sm">S2</span> · Jun 2021 — Jul 2022 · 1 yr 2 mos</div>
-                <div class="card-tags"><span class="card-tag">PowerShell</span><span class="card-tag">SCCM</span><span class="card-tag">SQL</span></div>
-            </div>
+    </div>
+
+    <div class="episode" onclick="openModal('gwu-intern')">
+        <div class="episode-number">3</div>
+        <div class="episode-thumb card-ml">GWU — INTERN<span class="ep-sub">AI/ML · RPi</span></div>
+        <div class="episode-info">
+            <div class="ep-company">The George Washington University</div>
+            <h3>Software Intern (AI/ML/Raspberry Pi)</h3>
+            <p class="ep-desc">Built and enhanced internal applications and demo prototypes to support Prof. Eric Dano's coursework and lab operations. Delivered multiple demos, iterated on feedback, and created structured documentation.</p>
+            <div class="ep-tags"><span class="card-tag">Python</span><span class="card-tag">MQTT</span><span class="card-tag">Raspberry Pi</span><span class="card-tag">Streamlit</span><span class="card-tag">ML</span></div>
         </div>
-        <div class="card card-wide" onclick="openModal('rootkings')">
-            <div class="card-bg card-fs">ROOT KINGS<br><span style="font-size:0.7rem;opacity:0.7;letter-spacing:0;">Superrfan · Social Platform</span></div>
-            <div class="card-overlay">
-                <div class="card-title">Web Developer — Root Kings</div>
-                <div class="card-meta"><span class="match-sm">S1</span> · Nov 2020 — May 2021 · 7 mos</div>
-                <div class="card-tags"><span class="card-tag">Vue.js</span><span class="card-tag">JavaScript</span><span class="card-tag">HTML/CSS</span></div>
-            </div>
+        <div class="episode-right">
+            <div class="ep-date">Feb 2025 — Dec 2025</div>
+            <div class="ep-duration">11 mos</div>
+            <span class="ep-status ep-complete">Complete</span>
         </div>
-        <div class="card card-wide">
-            <div class="card-bg card-cert">TALENT ANYWHERE<br><span style="font-size:0.7rem;opacity:0.7;letter-spacing:0;">PHP · Platform Development</span></div>
-            <div class="card-overlay">
-                <div class="card-title">Software Engineer (PHP) — Talent Anywhere</div>
-                <div class="card-meta">Aug — Nov 2020 · 4 mos · Pune</div>
-                <div class="card-tags"><span class="card-tag">PHP</span><span class="card-tag">CodeIgniter</span><span class="card-tag">CMS</span></div>
-            </div>
+    </div>
+
+    <div class="episode" onclick="openModal('startups')">
+        <div class="episode-number">4</div>
+        <div class="episode-thumb card-data">STARTUPS<span class="ep-sub">FinTech · EdTech</span></div>
+        <div class="episode-info">
+            <div class="ep-company">Stealth Startups — GoScale, FriendSquare, Alternative Structure Group</div>
+            <h3>Software Engineer (Full-Stack)</h3>
+            <p class="ep-desc">Designed MySQL schemas for apps serving 10,000+ users, reducing page load times by 40%. Built full-stack features end-to-end using Python, MySQL, and JavaScript across fintech and edtech products.</p>
+            <div class="ep-tags"><span class="card-tag">Python</span><span class="card-tag">MySQL</span><span class="card-tag">JavaScript</span><span class="card-tag">PHP</span><span class="card-tag">CodeIgniter</span></div>
         </div>
-        <div class="card card-wide">
-            <div class="card-bg card-web">MAXGEN TECH<br><span style="font-size:0.7rem;opacity:0.7;letter-spacing:0;">Java · Web Development</span></div>
-            <div class="card-overlay">
-                <div class="card-title">Junior Java Developer — Maxgen Technologies</div>
-                <div class="card-meta">Jan — Jun 2020 · 6 mos · Pune</div>
-                <div class="card-tags"><span class="card-tag">Java</span><span class="card-tag">HTML/CSS</span><span class="card-tag">JavaScript</span></div>
-            </div>
+        <div class="episode-right">
+            <div class="ep-date">Aug 2022 — May 2024</div>
+            <div class="ep-duration">1 yr 10 mos</div>
+            <span class="ep-status ep-complete">Complete</span>
+        </div>
+    </div>
+
+    <div class="episode" onclick="openModal('cognizant')">
+        <div class="episode-number">5</div>
+        <div class="episode-thumb card-exp">COGNIZANT<span class="ep-sub">Enterprise · DevOps</span></div>
+        <div class="episode-info">
+            <div class="ep-company">Cognizant Technology Solutions</div>
+            <h3>Programming Analyst</h3>
+            <p class="ep-desc">Deployed 100+ enterprise applications across 10,000+ endpoints with 98% success rate. Automated provisioning workflows reducing setup time by 40%. Managed SQL databases with 10,000+ records.</p>
+            <div class="ep-tags"><span class="card-tag">PowerShell</span><span class="card-tag">SCCM</span><span class="card-tag">SQL</span><span class="card-tag">Intune</span></div>
+        </div>
+        <div class="episode-right">
+            <div class="ep-date">Jun 2021 — Jul 2022</div>
+            <div class="ep-duration">1 yr 2 mos</div>
+            <span class="ep-status ep-complete">Complete</span>
+        </div>
+    </div>
+
+    <div class="episode" onclick="openModal('rootkings')">
+        <div class="episode-number">6</div>
+        <div class="episode-thumb card-fs">ROOT KINGS<span class="ep-sub">Vue.js · Social</span></div>
+        <div class="episode-info">
+            <div class="ep-company">Root Kings</div>
+            <h3>Web Developer</h3>
+            <p class="ep-desc">Developed Superrfan-App — a celebrity game-based social media platform with Vue.js. Built team creation, rating systems, and reward mechanics that significantly increased user engagement.</p>
+            <div class="ep-tags"><span class="card-tag">Vue.js</span><span class="card-tag">JavaScript</span><span class="card-tag">HTML/CSS</span></div>
+        </div>
+        <div class="episode-right">
+            <div class="ep-date">Nov 2020 — May 2021</div>
+            <div class="ep-duration">7 mos</div>
+            <span class="ep-status ep-complete">Complete</span>
+        </div>
+    </div>
+
+    <div class="episode">
+        <div class="episode-number">7</div>
+        <div class="episode-thumb card-cert">TALENT ANY.<span class="ep-sub">PHP · CMS</span></div>
+        <div class="episode-info">
+            <div class="ep-company">Talent Anywhere</div>
+            <h3>Software Engineer (PHP)</h3>
+            <p class="ep-desc">Developed the Gujarati Sahitya Forum platform using PHP and CodeIgniter. Implemented user authentication, content management features, and optimized website performance.</p>
+            <div class="ep-tags"><span class="card-tag">PHP</span><span class="card-tag">CodeIgniter</span><span class="card-tag">JavaScript</span></div>
+        </div>
+        <div class="episode-right">
+            <div class="ep-date">Aug — Nov 2020</div>
+            <div class="ep-duration">4 mos</div>
+            <span class="ep-status ep-complete">Complete</span>
+        </div>
+    </div>
+
+    <div class="episode">
+        <div class="episode-number">8</div>
+        <div class="episode-thumb card-web">MAXGEN<span class="ep-sub">Java · Web Dev</span></div>
+        <div class="episode-info">
+            <div class="ep-company">Maxgen Technologies</div>
+            <h3>Junior Java Developer</h3>
+            <p class="ep-desc">Designed responsive web pages using Java, HTML, CSS, and JavaScript. Collaborated with cross-functional teams on front-end/back-end integration. Reviewed code and debugged errors.</p>
+            <div class="ep-tags"><span class="card-tag">Java</span><span class="card-tag">HTML/CSS</span><span class="card-tag">JavaScript</span></div>
+        </div>
+        <div class="episode-right">
+            <div class="ep-date">Jan — Jun 2020</div>
+            <div class="ep-duration">6 mos</div>
+            <span class="ep-status ep-complete">Complete</span>
         </div>
     </div>
 </div>
@@ -1139,7 +1344,7 @@
 
 <!-- ═══ REVIEWS (TESTIMONIALS) ═══ -->
 <div class="category" id="reviews">
-    <div class="category-title">⭐ Audience Reviews <span class="explore">See All ›</span></div>
+    <div class="category-title"> Reviews <span class="explore">See All ›</span></div>
     <div class="carousel">
         <div class="testimonial-card">
             <div class="testimonial-stars">★★★★★</div>
